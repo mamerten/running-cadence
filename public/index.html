@@ -37,8 +37,13 @@
   #shuffle.on { outline:2px solid var(--accent); color:var(--accent); }
   #now { margin-top:14px; min-height:1.3em; }
   progress { width:100%; height:4px; accent-color:var(--accent); }
-  .mini { display:flex; align-items:center; gap:10px; margin-top:12px; }
-  .mini button { padding:8px 14px; font-size:16px; }
+  /* Now-playing bar: pinned to the bottom of every screen once something has played */
+  body.has-mini { padding-bottom:calc(env(safe-area-inset-bottom) + 88px); }
+  .mini { position:fixed; left:0; right:0; bottom:0; z-index:10; display:flex; align-items:center; gap:12px;
+          background:#000; border-top:1px solid #333;
+          padding:10px 16px calc(env(safe-area-inset-bottom) + 10px); }
+  .mini button { background:var(--accent); color:#111; font-weight:700; padding:12px 0; width:96px; flex:none; }
+  .mini span { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   footer { color:var(--dim); font-size:13px; margin-top:28px; line-height:1.5; }
   details summary { cursor:pointer; }
   .hidden { display:none !important; }
@@ -57,9 +62,6 @@
     <button data-mode="military">Military only</button>
     <button data-mode="both">Both</button>
     <button data-mode="music">Techno</button>
-  </div>
-  <div id="mini" class="mini hidden">
-    <button id="miniPlay">Pause</button><span id="miniNow" class="sub"></span>
   </div>
   <ul id="buckets"></ul>
   <footer>
@@ -81,6 +83,11 @@
   <progress id="prog" value="0" max="1"></progress>
   <ul id="tracks"></ul>
 </section>
+
+<!-- Now playing: on every screen. Tap the text to jump to that cadence. -->
+<div id="mini" class="mini hidden">
+  <button id="miniPlay">Pause</button><span id="miniNow" class="sub"></span>
+</div>
 
 <audio id="audio" preload="none" playsinline></audio>
 
@@ -190,6 +197,7 @@ function renderBucket() {
   }
   $('shuffle').classList.toggle('on', shuffle);
   updateControls();
+  updateMini();
 }
 
 function route() {
@@ -251,6 +259,7 @@ function updateMini() {
     $('miniPlay').textContent = audio.paused ? 'Play' : 'Pause';
     $('miniNow').textContent = `${label(playingBucket)} spm · ${queue[pos].title}`;
   }
+  document.body.classList.toggle('has-mini', on);
 }
 
 $('play').onclick = () => {
@@ -260,7 +269,8 @@ $('play').onclick = () => {
 for (const btn of $('modes').children) {
   btn.onclick = () => { mode = btn.dataset.mode; store.set('mode', mode); renderHome(); };
 }
-$('miniPlay').onclick =() => { audio.paused ? audio.play() : audio.pause(); };
+$('miniPlay').onclick = () => { audio.paused ? audio.play() : audio.pause(); };
+$('miniNow').onclick = () => { if (playingBucket !== null) location.hash = `#/${playingBucket}`; };
 $('shuffle').onclick = () => {
   shuffle = !shuffle;
   store.set('shuffle', shuffle);

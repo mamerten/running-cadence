@@ -3,7 +3,9 @@
 Personal cadence player: https://cadence.matmerten.com
 
 Home screen lists 5-spm buckets (150–154 … 185–189). Tap one for a screen with
-just those tracks: Play/Pause and Shuffle. Plays with the iPhone screen locked.
+just those tracks: Play/Pause and Shuffle. Once something is playing, a
+Play/Pause bar stays pinned to the bottom of every screen (tap its text to jump
+back to that cadence). Plays with the iPhone screen locked.
 
 ## Music sources
 - **Generated beats** – `tools/make_cadence_tracks.py` (drumline / rock / electro, kick on every step)
