@@ -16,7 +16,8 @@ back to that cadence). Plays with the iPhone screen locked.
   150–189 spm cadence, and writes `tools/cadence-tracks.json`
 - **Your music** – drop files in `public/music/`
 
-Audio files are not in git (see `.gitignore`).
+Beats, free tracks and cadence clips are in git so Cloudflare deploys on every
+push to `main`. Files in `public/music/` stay out of git (see `.gitignore`).
 
 ## Add your own music
 1. Copy MP3/M4A files (DRM-free) into `public/music/`.

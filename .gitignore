@@ -1,10 +1,8 @@
 node_modules/
 .wrangler/
 staging/
-# Audio stays out of git: beats regenerate from tools/make_cadence_tracks.py,
-# free tracks are listed in tools/free-tracks.json, your music is yours.
-public/generated/
-public/free/
+# Generated beats, free (CC BY) tracks and public-domain cadence clips are
+# committed so Cloudflare can deploy straight from GitHub. Your own music stays
+# out of git (and off the public repo).
 public/music/
-public/cadence/
 public/tracks.json
