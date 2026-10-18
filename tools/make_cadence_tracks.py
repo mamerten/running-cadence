@@ -99,7 +99,7 @@ def render(bpm, style):
 
     for bar in range(bars):
         section = (bar // 16) % 4               # change feel every 16 bars
-        intro = bar < 4
+        intro = bar < 4 and style != "electro"  # electro starts full-on
         root = prog[bar % 4]
         for b in range(4):
             t0 = (bar * 4 + b) * beat
@@ -136,8 +136,8 @@ def render(bpm, style):
                 place(buf, HO, j, 0.22)         # offbeat open hat
                 if not intro:
                     place(buf, bass(root, beat / 2), j, 0.45)   # pumping offbeat bass
-                if section in (1, 2) and not intro:
-                    arp = [1, 1.5, 2, 3] if section == 1 else [2, 1.5, 1.189, 1.5]
+                if section != 3:                # arpeggio in 3 of every 4 sections
+                    arp = ([1, 2, 1.5, 2], [1, 1.5, 2, 3], [2, 1.5, 1.189, 1.5])[section]
                     for s in range(4):
                         place(buf, pluck(root * 4 * arp[s], beat / 4),
                               int((t0 + s * beat / 4) * SR), 0.08)

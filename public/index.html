@@ -92,9 +92,35 @@ const store = {
 };
 let shuffle = store.get('shuffle', true);
 
+const MAX_NUDGE = 0.04;              // tracks from nearby buckets may be sped up/slowed up to 4%
+
 const bucketOf = t => t.bpm == null ? 'unsorted' : Math.floor(t.bpm / SIZE) * SIZE;
 const label = b => b === 'unsorted' ? 'Unsorted' : `${b}–${b + SIZE - 1}`;
-const inBucket = b => tracks.filter(t => bucketOf(t) === b);
+
+// An entry is a track plus the speed to play it at. Native tracks play at 1.0;
+// a track just outside the bucket is nudged to the nearest tempo inside it.
+function inBucket(b) {
+  if (b === 'unsorted') return tracks.filter(t => t.bpm == null).map(t => entry(t, t.bpm));
+  const native = [], nudged = [];
+  for (const t of tracks) {
+    if (t.bpm == null) continue;
+    if (bucketOf(t) === b) { native.push(entry(t, t.bpm)); continue; }
+    if (t.artist === 'Generated') continue;     // every bucket already has its own beats
+    const target = Math.min(Math.max(t.bpm, b), b + SIZE - 1);
+    if (Math.abs(target / t.bpm - 1) <= MAX_NUDGE) nudged.push(entry(t, target));
+  }
+  return [...native, ...nudged];
+}
+
+function entry(t, bpm) {
+  const rate = t.bpm ? bpm / t.bpm : 1;
+  const pct = Math.round((rate - 1) * 100);
+  return {
+    t, bpm, rate, key: `${t.src}@${bpm}`,
+    title: t.title + (rate > 1 ? ' (faster)' : rate < 1 ? ' (slower)' : ''),
+    note: rate === 1 ? '' : ` · ${pct > 0 ? '+' : ''}${pct}% from ${t.bpm}`,
+  };
+}
 
 function shuffled(list) {
   const a = list.slice();
@@ -108,17 +134,16 @@ function shuffled(list) {
 // ---------- screens ----------
 
 function renderHome() {
-  const groups = new Map();
-  for (const t of tracks) {
-    const b = bucketOf(t);
-    groups.set(b, (groups.get(b) || 0) + 1);
-  }
+  const buckets = [...new Set(tracks.map(bucketOf))];
   const ul = $('buckets');
   ul.innerHTML = '';
-  for (const [b, n] of groups) {
+  for (const b of buckets) {
+    const list = inBucket(b);
+    const n = list.filter(e => e.rate === 1).length, adj = list.length - n;
     const li = document.createElement('li');
     li.className = 'bucket' + (b === playingBucket ? ' live' : '');
-    li.innerHTML = `<span>${label(b)}</span><span class="count">${n} track${n > 1 ? 's' : ''}</span>`;
+    li.innerHTML = `<span>${label(b)}</span><span class="count">${n} track${n > 1 ? 's' : ''}` +
+      (adj ? ` + ${adj} adjusted` : '') + `</span>`;
     li.onclick = () => { location.hash = `#/${b}`; };
     ul.appendChild(li);
   }
@@ -132,17 +157,19 @@ function renderHome() {
 function renderBucket() {
   const list = inBucket(viewBucket);
   $('bTitle').textContent = `${label(viewBucket)} spm`;
-  $('bSub').textContent = `${list.length} track${list.length > 1 ? 's' : ''}`;
+  const adj = list.filter(e => e.rate !== 1).length;
+  $('bSub').textContent = `${list.length - adj} tracks` + (adj ? ` + ${adj} sped up or slowed down (max 4%)` : '');
   const ul = $('tracks');
   ul.innerHTML = '';
-  for (const t of list) {
+  const cur = pos >= 0 ? queue[pos].key : null;
+  for (const e of list) {
     const li = document.createElement('li');
-    li.className = 'track' + (t === queue[pos] ? ' playing' : '');
+    li.className = 'track' + (e.key === cur ? ' playing' : '');
     li.innerHTML = `<span class="bpm"></span><div class="t"></div><div class="a"></div>`;
-    li.querySelector('.bpm').textContent = t.bpm ?? '';
-    li.querySelector('.t').textContent = t.title;
-    li.querySelector('.a').textContent = t.artist;
-    li.onclick = () => startBucket(viewBucket, t);
+    li.querySelector('.bpm').textContent = e.bpm ?? '';
+    li.querySelector('.t').textContent = e.title;
+    li.querySelector('.a').textContent = e.t.artist + e.note;
+    li.onclick = () => startBucket(viewBucket, e.key);
     ul.appendChild(li);
   }
   $('shuffle').classList.toggle('on', shuffle);
@@ -160,23 +187,30 @@ function route() {
 
 // ---------- playback ----------
 
-function startBucket(b, first) {
+function startBucket(b, firstKey) {
   const list = inBucket(b);
   queue = shuffle ? shuffled(list) : list;
-  if (first) queue = [first, ...queue.filter(t => t !== first)];
+  if (firstKey) {
+    const first = queue.find(e => e.key === firstKey);
+    queue = [first, ...queue.filter(e => e !== first)];
+  }
   playingBucket = b;
   playAt(0);
 }
 
 function playAt(i) {
   pos = i;
-  const t = queue[pos];
-  audio.src = t.src;
+  const e = queue[pos];
+  audio.src = e.t.src;
+  // Speed nudge with pitch kept the same (webkit prefix for older Safari).
+  // defaultPlaybackRate survives the new src loading; playbackRate applies now.
+  audio.preservesPitch = audio.webkitPreservesPitch = true;
+  audio.defaultPlaybackRate = audio.playbackRate = e.rate;
   audio.loop = queue.length === 1;              // lone track just repeats
   audio.play();
   if ('mediaSession' in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({
-      title: t.title, artist: `${t.artist} · ${t.bpm ?? '?'} spm`, album: `${label(playingBucket)} spm`,
+      title: e.title, artist: `${e.t.artist} · ${e.bpm ?? '?'} spm`, album: `${label(playingBucket)} spm`,
       artwork: [{ src: 'icon.png', sizes: '512x512', type: 'image/png' }],
     });
   }
@@ -191,7 +225,7 @@ audio.onended = () => {
 function updateControls() {
   const here = playingBucket === viewBucket && pos >= 0;
   $('play').textContent = here && !audio.paused ? 'Pause' : 'Play';
-  $('now').textContent = here ? `Now: ${queue[pos].title} · ${queue[pos].artist}` : '';
+  $('now').textContent = here ? `Now: ${queue[pos].title} · ${queue[pos].t.artist}` : '';
 }
 
 function updateMini() {
@@ -212,7 +246,7 @@ $('shuffle').onclick = () => {
   shuffle = !shuffle;
   store.set('shuffle', shuffle);
   if (playingBucket === viewBucket && pos >= 0) {   // reorder what's left, keep current song
-    const cur = queue[pos], rest = inBucket(viewBucket).filter(t => t !== cur);
+    const cur = queue[pos], rest = inBucket(viewBucket).filter(e => e.key !== cur.key);
     queue = [cur, ...(shuffle ? shuffled(rest) : rest)];
     pos = 0;
   }
