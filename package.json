@@ -1,0 +1,12 @@
+{
+  "name": "running-cadence",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "tracks": "node tools/build-tracklist.mjs",
+    "deploy": "node tools/build-tracklist.mjs && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "4.151.1"
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+.wrangler/
+staging/
+# Audio stays out of git: beats regenerate from tools/make_cadence_tracks.py,
+# free tracks are listed in tools/free-tracks.json, your music is yours.
+public/generated/
+public/free/
+public/music/
+public/tracks.json

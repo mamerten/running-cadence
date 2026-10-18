@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Cadence">
+<meta name="theme-color" content="#111">
+<link rel="apple-touch-icon" href="icon.png">
+<title>Cadence</title>
+<style>
+  :root { --bg:#111; --fg:#eee; --dim:#888; --accent:#e8b33a; --row:#1c1c1c; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:16px -apple-system, system-ui, sans-serif;
+         padding:env(safe-area-inset-top) 16px calc(env(safe-area-inset-bottom) + 16px); }
+  h1 { font-size:24px; margin:20px 0 4px; }
+  .sub { color:var(--dim); font-size:14px; }
+  a { color:var(--accent); }
+  button { background:var(--row); color:var(--fg); border:0; border-radius:12px;
+           font:inherit; font-size:18px; padding:14px 18px; }
+  ul { list-style:none; margin:16px 0 0; padding:0; }
+  li { background:var(--row); border-radius:10px; padding:14px; margin-bottom:6px; }
+  li.bucket { display:flex; justify-content:space-between; align-items:center;
+              font-size:22px; font-weight:600; padding:18px 16px; }
+  li.bucket .count { color:var(--dim); font-size:14px; font-weight:400; }
+  li.bucket.live { outline:2px solid var(--accent); }
+  li.track .t { font-weight:500; }
+  li.track .a { color:var(--dim); font-size:13px; margin-top:2px; }
+  li.track.playing { outline:2px solid var(--accent); }
+  .bpm { color:var(--accent); float:right; font-variant-numeric:tabular-nums; }
+  .back { background:none; padding:16px 0 0; color:var(--accent); font-size:17px; }
+  .controls { display:flex; gap:10px; margin-top:16px; }
+  #play { background:var(--accent); color:#111; font-weight:700; flex:2; font-size:22px; padding:18px; }
+  #shuffle { flex:1; }
+  #shuffle.on { outline:2px solid var(--accent); color:var(--accent); }
+  #now { margin-top:14px; min-height:1.3em; }
+  progress { width:100%; height:4px; accent-color:var(--accent); }
+  .mini { display:flex; align-items:center; gap:10px; margin-top:12px; }
+  .mini button { padding:8px 14px; font-size:16px; }
+  footer { color:var(--dim); font-size:13px; margin-top:28px; line-height:1.5; }
+  details summary { cursor:pointer; }
+  .hidden { display:none !important; }
+</style>
+</head>
+<body>
+
+<!-- Home: one row per 5-spm bucket -->
+<section id="home">
+  <h1>Cadence</h1>
+  <div class="sub">Pick your steps per minute.</div>
+  <div id="mini" class="mini hidden">
+    <button id="miniPlay">Pause</button><span id="miniNow" class="sub"></span>
+  </div>
+  <ul id="buckets"></ul>
+  <footer>
+    <a href="https://github.com/mamerten/running-cadence">GitHub: running-cadence</a>
+    <details><summary>Music credits</summary><div id="credits"></div></details>
+  </footer>
+</section>
+
+<!-- Bucket: tracks in one range, Play/Pause + Shuffle only -->
+<section id="bucket" class="hidden">
+  <button class="back" onclick="location.hash=''">‹ All cadences</button>
+  <h1 id="bTitle"></h1>
+  <div id="bSub" class="sub"></div>
+  <div class="controls">
+    <button id="play">Play</button>
+    <button id="shuffle">Shuffle</button>
+  </div>
+  <div id="now" class="sub"></div>
+  <progress id="prog" value="0" max="1"></progress>
+  <ul id="tracks"></ul>
+</section>
+
+<audio id="audio" preload="none" playsinline></audio>
+
+<script>
+const $ = id => document.getElementById(id);
+const audio = $('audio');
+const SIZE = 5;
+
+let tracks = [];
+let viewBucket = null;              // bucket on screen
+let queue = [], pos = -1;           // what's actually playing (may differ from screen)
+let playingBucket = null;
+
+const store = {
+  get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+let shuffle = store.get('shuffle', true);
+
+const bucketOf = t => t.bpm == null ? 'unsorted' : Math.floor(t.bpm / SIZE) * SIZE;
+const label = b => b === 'unsorted' ? 'Unsorted' : `${b}–${b + SIZE - 1}`;
+const inBucket = b => tracks.filter(t => bucketOf(t) === b);
+
+function shuffled(list) {
+  const a = list.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// ---------- screens ----------
+
+function renderHome() {
+  const groups = new Map();
+  for (const t of tracks) {
+    const b = bucketOf(t);
+    groups.set(b, (groups.get(b) || 0) + 1);
+  }
+  const ul = $('buckets');
+  ul.innerHTML = '';
+  for (const [b, n] of groups) {
+    const li = document.createElement('li');
+    li.className = 'bucket' + (b === playingBucket ? ' live' : '');
+    li.innerHTML = `<span>${label(b)}</span><span class="count">${n} track${n > 1 ? 's' : ''}</span>`;
+    li.onclick = () => { location.hash = `#/${b}`; };
+    ul.appendChild(li);
+  }
+  $('credits').innerHTML = tracks.filter(t => t.license).map(t =>
+    `<div>“${esc(t.title)}” – ${esc(t.artist)} · <a href="${esc(t.license_url || '#')}">${esc(t.license)}</a>` +
+    (t.source_url ? ` · <a href="${esc(t.source_url)}">source</a>` : '') + '</div>').join('')
+    || 'Beat tracks are generated for this app.';
+  updateMini();
+}
+
+function renderBucket() {
+  const list = inBucket(viewBucket);
+  $('bTitle').textContent = `${label(viewBucket)} spm`;
+  $('bSub').textContent = `${list.length} track${list.length > 1 ? 's' : ''}`;
+  const ul = $('tracks');
+  ul.innerHTML = '';
+  for (const t of list) {
+    const li = document.createElement('li');
+    li.className = 'track' + (t === queue[pos] ? ' playing' : '');
+    li.innerHTML = `<span class="bpm"></span><div class="t"></div><div class="a"></div>`;
+    li.querySelector('.bpm').textContent = t.bpm ?? '';
+    li.querySelector('.t').textContent = t.title;
+    li.querySelector('.a').textContent = t.artist;
+    li.onclick = () => startBucket(viewBucket, t);
+    ul.appendChild(li);
+  }
+  $('shuffle').classList.toggle('on', shuffle);
+  updateControls();
+}
+
+function route() {
+  const m = location.hash.match(/^#\/(\w+)$/);
+  viewBucket = m ? (m[1] === 'unsorted' ? 'unsorted' : +m[1]) : null;
+  $('home').classList.toggle('hidden', viewBucket !== null);
+  $('bucket').classList.toggle('hidden', viewBucket === null);
+  viewBucket === null ? renderHome() : renderBucket();
+  window.scrollTo(0, 0);
+}
+
+// ---------- playback ----------
+
+function startBucket(b, first) {
+  const list = inBucket(b);
+  queue = shuffle ? shuffled(list) : list;
+  if (first) queue = [first, ...queue.filter(t => t !== first)];
+  playingBucket = b;
+  playAt(0);
+}
+
+function playAt(i) {
+  pos = i;
+  const t = queue[pos];
+  audio.src = t.src;
+  audio.loop = queue.length === 1;              // lone track just repeats
+  audio.play();
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: t.title, artist: `${t.artist} · ${t.bpm ?? '?'} spm`, album: `${label(playingBucket)} spm`,
+      artwork: [{ src: 'icon.png', sizes: '512x512', type: 'image/png' }],
+    });
+  }
+  viewBucket !== null ? renderBucket() : renderHome();
+}
+
+audio.onended = () => {
+  if (pos + 1 < queue.length) return playAt(pos + 1);
+  startBucket(playingBucket);                   // wrap around (reshuffles)
+};
+
+function updateControls() {
+  const here = playingBucket === viewBucket && pos >= 0;
+  $('play').textContent = here && !audio.paused ? 'Pause' : 'Play';
+  $('now').textContent = here ? `Now: ${queue[pos].title} · ${queue[pos].artist}` : '';
+}
+
+function updateMini() {
+  const on = pos >= 0;
+  $('mini').classList.toggle('hidden', !on);
+  if (on) {
+    $('miniPlay').textContent = audio.paused ? 'Play' : 'Pause';
+    $('miniNow').textContent = `${label(playingBucket)} spm · ${queue[pos].title}`;
+  }
+}
+
+$('play').onclick = () => {
+  if (playingBucket !== viewBucket || pos < 0) return startBucket(viewBucket);
+  audio.paused ? audio.play() : audio.pause();
+};
+$('miniPlay').onclick = () => { audio.paused ? audio.play() : audio.pause(); };
+$('shuffle').onclick = () => {
+  shuffle = !shuffle;
+  store.set('shuffle', shuffle);
+  if (playingBucket === viewBucket && pos >= 0) {   // reorder what's left, keep current song
+    const cur = queue[pos], rest = inBucket(viewBucket).filter(t => t !== cur);
+    queue = [cur, ...(shuffle ? shuffled(rest) : rest)];
+    pos = 0;
+  }
+  renderBucket();
+};
+
+audio.onplay = audio.onpause = () => { updateControls(); updateMini(); };
+audio.ontimeupdate = () => { if (audio.duration) $('prog').value = audio.currentTime / audio.duration; };
+
+// iOS 17+: declare this as music playback (not ambient sound) so the
+// ring/silent switch doesn't mute it and it keeps going when locked.
+try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch {}
+
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.setActionHandler('play', () => audio.play());
+  navigator.mediaSession.setActionHandler('pause', () => audio.pause());
+}
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+fetch('tracks.json', { cache: 'no-store' }).then(r => r.json()).then(data => {
+  tracks = data;
+  addEventListener('hashchange', route);
+  route();
+});
+</script>
+</body>
+</html>
