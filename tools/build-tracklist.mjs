@@ -30,7 +30,7 @@ const tracks = [];
 for (const f of files('generated')) {
   const m = parse(f).name.match(/^cadence-(\d+)-(\w+)$/);
   if (!m) continue;
-  tracks.push({ title: `${cap(m[2])} beat`, artist: 'Generated', bpm: +m[1], src: src('generated', f) });
+  tracks.push({ title: `${cap(m[2])} beat`, artist: 'Generated', bpm: +m[1], src: src('generated', f), kind: 'music' });
 }
 
 // Licensed tracks with a metadata file: free music, and military cadence calls.
@@ -43,6 +43,7 @@ for (const [dir, metaFor] of [['free', freeMeta], ['cadence', cadenceMeta]]) {
     tracks.push({
       title: meta.title, bpm: meta.bpm, src: src(dir, f),
       artist: dir === 'cadence' ? 'Military cadence' : meta.artist,
+      kind: dir === 'cadence' ? 'military' : 'music',
       license: meta.license, license_url: meta.license_url, source_url: meta.source_url,
     });
   }
@@ -52,7 +53,7 @@ for (const f of files('music')) {
   const name = parse(f).name;
   const m = name.match(/^(\d{3})\s*-\s*(.*)$/);
   tracks.push({
-    title: m ? m[2] : name, artist: 'My music',
+    title: m ? m[2] : name, artist: 'My music', kind: 'music',
     bpm: m ? +m[1] : (bpmCache[`music/${f}`] ?? null), src: src('music', f),
   });
 }

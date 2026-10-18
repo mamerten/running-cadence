@@ -53,6 +53,10 @@ def encode(x, path):
     path.write_bytes(enc.encode(pcm.tobytes()) + enc.flush())
 
 
+# Clips reviewed and rejected. CPO Heritage Days: filmed under a covered
+# pavilion with a seated audience, so the cadence is buried in echo/crowd.
+REJECT = ("cpo-herita", "cpo-selects")
+
 WIN, HOP = 12, 4          # seconds: analysis window and step
 MIN_WINDOWS = 4           # 4 agreeing windows = at least 24 s of steady cadence
 TOLERANCE = 4             # spm a window may differ from the segment's median
@@ -102,7 +106,7 @@ def main():
                 if META.exists() else {})
     done = {t["from"] for t in existing.values()}
     for m in manifest:
-        if m["file"] in done:
+        if m["file"] in done or any(r in m["file"] for r in REJECT):
             continue
         try:
             x = decode_all(STAGING / m["file"])
