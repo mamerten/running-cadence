@@ -2,19 +2,30 @@
 
 Personal cadence player: https://cadence.matmerten.com
 
+Home screen lists 5-spm buckets (150–154 … 185–189). Tap one for a screen with
+just those tracks: Play/Pause and Shuffle. Plays with the iPhone screen locked.
+
+## Music sources
+- **Generated beats** – `tools/make_cadence_tracks.py` (drumline / rock / electro, kick on every step)
+- **Free music** – Kevin MacLeod (incompetech.com), CC BY 4.0; list in `tools/free-tracks.json`
+  (stated BPM, cross-checked with `tools/detect_bpm.py`)
+- **Your music** – drop files in `public/music/`
+
+Audio files are not in git (see `.gitignore`).
+
 ## Add your own music
 1. Copy MP3/M4A files (DRM-free) into `public/music/`.
-   Name them `180 - Song Title.mp3` to show the steps-per-minute.
-2. Redeploy: `npm run deploy`
+2. Either name them `180 - Song Title.mp3`, or detect tempo automatically:
+   `pip install numpy av` then `python tools/detect_bpm.py --music`
+3. `npm run deploy`
 
-Keep Cloudflare Access turned on before uploading your own music, so the files aren't public.
+Copyrighted music on a public URL: turn on Cloudflare Access for cadence.matmerten.com first.
 
-## Regenerate the beat tracks
-`pip install numpy lameenc`, then `python tools/make_cadence_tracks.py`.
-Change `TEMPOS` / `MINUTES` at the top of the script, then `npm run deploy`.
+## Regenerate beat tracks
+`pip install numpy lameenc`, then `python tools/make_cadence_tracks.py` and `npm run deploy`.
 
 ## How it fits together
-- `public/` – the site (index.html player, generated beats, your music, tracks.json)
-- `tools/build-tracklist.mjs` – scans the audio folders and writes `tracks.json` (runs on every deploy)
-- `src/worker.js` – adds byte-range support for audio so iPhone Safari can stream and seek
-- `wrangler.jsonc` – Cloudflare Workers config
+- `public/index.html` – the whole player
+- `tools/build-tracklist.mjs` – writes `public/tracks.json` (runs on every deploy)
+- `src/worker.js` – byte-range support so iPhone Safari can stream and seek audio
+- `wrangler.jsonc` – Cloudflare Workers config (custom domain cadence.matmerten.com)
