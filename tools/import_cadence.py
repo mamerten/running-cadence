@@ -55,7 +55,8 @@ def encode(x, path):
 
 # Clips reviewed and rejected. CPO Heritage Days: filmed under a covered
 # pavilion with a seated audience, so the cadence is buried in echo/crowd.
-REJECT = ("cpo-herita", "cpo-selects")
+# Golf Co. moto run, Sounds of Freedom, MCRD Echo Co.: poor recordings.
+REJECT = ("cpo-herita", "cpo-selects", "dvids-1023298-", "dvids-739888-", "dvids-973986-")
 
 WIN, HOP = 12, 4          # seconds: analysis window and step
 MIN_WINDOWS = 4           # 4 agreeing windows = at least 24 s of steady cadence

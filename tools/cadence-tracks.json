@@ -5,19 +5,6 @@
   "bpm": null
  },
  {
-  "file": "dvids-1023298-golf-company-moto-run-b-roll-1.mp3",
-  "from": "dvids-1023298-golf-company-moto-run-b-roll.mp4",
-  "title": "Golf Company Moto Run (B-Roll)",
-  "artist": "Lance Cpl. Jacqueline Resendiz Martinez, MCRD San Diego",
-  "license": "Public domain (US Gov, DVIDS)",
-  "license_url": "https://www.usa.gov/government-copyright",
-  "source_url": "https://www.dvidshub.net/video/1023298/golf-company-moto-run-b-roll",
-  "kind": "running",
-  "start": 64,
-  "seconds": 32,
-  "bpm": 182
- },
- {
   "file": null,
   "from": "dvids-125348-9-11-tribute-run.mp4",
   "bpm": null
@@ -49,19 +36,6 @@
   "file": null,
   "from": "dvids-619210-run-back-cadence.mp4",
   "bpm": null
- },
- {
-  "file": "dvids-739888-sounds-of-freedom-1.mp3",
-  "from": "dvids-739888-sounds-of-freedom.mp4",
-  "title": "Sounds of Freedom",
-  "artist": "Staff Sgt. Alan Brutus and Sgt. Tyvel Clement, 25th Infantry Division",
-  "license": "Public domain (US Gov, DVIDS)",
-  "license_url": "https://www.usa.gov/government-copyright",
-  "source_url": "https://www.dvidshub.net/video/739888/sounds-freedom",
-  "kind": "running",
-  "start": 72,
-  "seconds": 24,
-  "bpm": 184
  },
  {
   "file": "dvids-795598-echo-company-motivational-run-and-platoon-introductions-1.mp3",
@@ -121,19 +95,6 @@
   "file": null,
   "from": "dvids-968151-b-roll-vicenza-military-community-celebrates-250-years-of-us.mp4",
   "bpm": null
- },
- {
-  "file": "dvids-973986-mcrd-san-diego-echo-company-motivational-run-1.mp3",
-  "from": "dvids-973986-mcrd-san-diego-echo-company-motivational-run.mp4",
-  "title": "MCRD San Diego Echo Company Motivational Run",
-  "artist": "Cpl. Eric Valerio, MCRD San Diego",
-  "license": "Public domain (US Gov, DVIDS)",
-  "license_url": "https://www.usa.gov/government-copyright",
-  "source_url": "https://www.dvidshub.net/video/973986/mcrd-san-diego-echo-company-motivational-run",
-  "kind": "running",
-  "start": 128,
-  "seconds": 24,
-  "bpm": 178
  },
  {
   "file": null,
