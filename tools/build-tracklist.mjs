@@ -41,7 +41,8 @@ for (const [dir, metaFor] of [['free', freeMeta], ['cadence', cadenceMeta]]) {
     const meta = metaFor[f];
     if (!meta || !meta.bpm) continue;             // only list tracks with a known tempo
     tracks.push({
-      title: meta.title, artist: meta.artist, bpm: meta.bpm, src: src(dir, f),
+      title: meta.title, bpm: meta.bpm, src: src(dir, f),
+      artist: dir === 'cadence' ? 'Military cadence' : meta.artist,
       license: meta.license, license_url: meta.license_url, source_url: meta.source_url,
     });
   }

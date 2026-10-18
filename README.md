@@ -9,6 +9,9 @@ just those tracks: Play/Pause and Shuffle. Plays with the iPhone screen locked.
 - **Generated beats** – `tools/make_cadence_tracks.py` (drumline / rock / electro, kick on every step)
 - **Free music** – Kevin MacLeod (incompetech.com), CC BY 4.0; list in `tools/free-tracks.json`
   (stated BPM, cross-checked with `tools/detect_bpm.py`)
+- **Military cadence** – public-domain US military video from DVIDS / Wikimedia Commons.
+  `tools/import_cadence.py` pulls the audio, keeps only stretches with a steady
+  150–189 spm cadence, and writes `tools/cadence-tracks.json`
 - **Your music** – drop files in `public/music/`
 
 Audio files are not in git (see `.gitignore`).
