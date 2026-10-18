@@ -33,13 +33,18 @@ for (const f of files('generated')) {
   tracks.push({ title: `${cap(m[2])} beat`, artist: 'Generated', bpm: +m[1], src: src('generated', f) });
 }
 
-for (const f of files('free')) {
-  const meta = freeMeta[f];
-  if (!meta || !meta.bpm) continue;               // only list tracks with a known tempo
-  tracks.push({
-    title: meta.title, artist: meta.artist, bpm: meta.bpm, src: src('free', f),
-    license: meta.license, license_url: meta.license_url, source_url: meta.source_url,
-  });
+// Licensed tracks with a metadata file: free music, and military cadence calls.
+const cadenceMeta = Object.fromEntries(
+  readJson(join(root, 'tools', 'cadence-tracks.json'), []).map(t => [t.file, t]));
+for (const [dir, metaFor] of [['free', freeMeta], ['cadence', cadenceMeta]]) {
+  for (const f of files(dir)) {
+    const meta = metaFor[f];
+    if (!meta || !meta.bpm) continue;             // only list tracks with a known tempo
+    tracks.push({
+      title: meta.title, artist: meta.artist, bpm: meta.bpm, src: src(dir, f),
+      license: meta.license, license_url: meta.license_url, source_url: meta.source_url,
+    });
+  }
 }
 
 for (const f of files('music')) {
