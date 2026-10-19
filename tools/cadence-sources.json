@@ -2,22 +2,22 @@
  {
   "file": "dvids-1011055-charlie-company-moto-run.mp4",
   "source": "dvids:1011055",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-125348-9-11-tribute-run.mp4",
   "source": "dvids:125348",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-416272-cstc-a-command-sgt-maj-leads-nco-run-in-kabul.mp4",
   "source": "dvids:416272",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-491640-2016-marine-corps-birthday-run.mp4",
   "source": "dvids:491640",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-576992-3rd-mlg-holiday-cadence-run-2017.mp4",
@@ -33,39 +33,39 @@
  {
   "file": "dvids-619210-run-back-cadence.mp4",
   "source": "dvids:619210",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-817756-golf-company-motivational-run.mp4",
   "source": "dvids:817756",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1.mp4",
   "source": "dvids:827771",
   "kind": "running",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-836249-battalion-run.mp4",
   "source": "dvids:836249",
   "kind": "running",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-898596-lance-cpl-hasanein-alrushdawi-obstacle-course-and-cbrn-train.mp4",
   "source": "dvids:898596",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-945031-kilo-co-moto-run.mp4",
   "source": "dvids:945031",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-968151-b-roll-vicenza-military-community-celebrates-250-years-of-us.mp4",
   "source": "dvids:968151",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "commons-army-old-lady-cadence.webm",
@@ -110,12 +110,12 @@
  {
   "file": "dvids-846449-1st-battalion-222d-aviation-regiment-soldiers-call-cadence.mp4",
   "source": "dvids:846449",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-1020984-kw26-bravo-company-cadences.mp4",
   "source": "dvids:1020984",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-301946-cadence-contest-2013-old-man-james.mp4",
@@ -185,22 +185,22 @@
  {
   "file": "dvids-348130-b-roll-of-warrior-diplomats-join-round-rock-in-independence.mp4",
   "source": "dvids:348130",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-485738-drill-instructor-cadence-calling-contest.mp4",
   "source": "dvids:485738",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-742963-getting-ready-to-train-conducting-tactical-combat-casualty-c.mp4",
   "source": "dvids:742963",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-777486-cadence-winner-receives-coin.mp4",
   "source": "dvids:777486",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-777613-cadence-competition-drill-sgt-johnson.mp4",
@@ -225,12 +225,12 @@
  {
   "file": "dvids-942906-yankee-204-marching.mp4",
   "source": "dvids:942906",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-956331-marching-to-success-how-rsp-builds-future-soldiers.mp4",
   "source": "dvids:956331",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "commons-dod-fort-jackson-bct-part-25-cadence.ogv",
@@ -241,72 +241,72 @@
  {
   "file": "dvids-52770.mp4",
   "source": "dvids:52770",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-54670.mp4",
   "source": "dvids:54670",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-58703.mp4",
   "source": "dvids:58703",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-58704.mp4",
   "source": "dvids:58704",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-67633.mp4",
   "source": "dvids:67633",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-68919.mp4",
   "source": "dvids:68919",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-89554.mp4",
   "source": "dvids:89554",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-89638.mp4",
   "source": "dvids:89638",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-90730.mp4",
   "source": "dvids:90730",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-115519.mp4",
   "source": "dvids:115519",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-115588.mp4",
   "source": "dvids:115588",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-115750.mp4",
   "source": "dvids:115750",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-135390.mp4",
   "source": "dvids:135390",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-145065.mp4",
   "source": "dvids:145065",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-146347.mp4",
@@ -321,97 +321,97 @@
  {
   "file": "dvids-151551.mp4",
   "source": "dvids:151551",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-151761.mp4",
   "source": "dvids:151761",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-156632.mp4",
   "source": "dvids:156632",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-285417.mp4",
   "source": "dvids:285417",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-285434.mp4",
   "source": "dvids:285434",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-293930.mp4",
   "source": "dvids:293930",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-299870.mp4",
   "source": "dvids:299870",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-304560.mp4",
   "source": "dvids:304560",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-322733.mp4",
   "source": "dvids:322733",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-338023.mp4",
   "source": "dvids:338023",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-338026.mp4",
   "source": "dvids:338026",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-344719.mp4",
   "source": "dvids:344719",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-348431.mp4",
   "source": "dvids:348431",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-373754.mp4",
   "source": "dvids:373754",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-401998.mp4",
   "source": "dvids:401998",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-404159.mp4",
   "source": "dvids:404159",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-404756.mp4",
   "source": "dvids:404756",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-404889.mp4",
   "source": "dvids:404889",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-404906.mp4",
   "source": "dvids:404906",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-405788.mp4",
@@ -426,17 +426,17 @@
  {
   "file": "dvids-414363.mp4",
   "source": "dvids:414363",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-428372.mp4",
   "source": "dvids:428372",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-428812.mp4",
   "source": "dvids:428812",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-457554.mp4",
@@ -451,67 +451,67 @@
  {
   "file": "dvids-461482.mp4",
   "source": "dvids:461482",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-465140.mp4",
   "source": "dvids:465140",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-465144.mp4",
   "source": "dvids:465144",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-468680.mp4",
   "source": "dvids:468680",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-468698.mp4",
   "source": "dvids:468698",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-470819.mp4",
   "source": "dvids:470819",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-470865.mp4",
   "source": "dvids:470865",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-493242.mp4",
   "source": "dvids:493242",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-493649.mp4",
   "source": "dvids:493649",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-498883.mp4",
   "source": "dvids:498883",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-504989.mp4",
   "source": "dvids:504989",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-504993.mp4",
   "source": "dvids:504993",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-520944.mp4",
   "source": "dvids:520944",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-524938.mp4",
@@ -526,117 +526,117 @@
  {
   "file": "dvids-526333.mp4",
   "source": "dvids:526333",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-526404.mp4",
   "source": "dvids:526404",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-565168.mp4",
   "source": "dvids:565168",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-568955.mp4",
   "source": "dvids:568955",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-601342.mp4",
   "source": "dvids:601342",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-602444.mp4",
   "source": "dvids:602444",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-624420.mp4",
   "source": "dvids:624420",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-631702.mp4",
   "source": "dvids:631702",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-639146.mp4",
   "source": "dvids:639146",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-649297.mp4",
   "source": "dvids:649297",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-649353.mp4",
   "source": "dvids:649353",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-649783.mp4",
   "source": "dvids:649783",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-658979.mp4",
   "source": "dvids:658979",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-671993.mp4",
   "source": "dvids:671993",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-671994.mp4",
   "source": "dvids:671994",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-680334.mp4",
   "source": "dvids:680334",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-681908.mp4",
   "source": "dvids:681908",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-681918.mp4",
   "source": "dvids:681918",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-681927.mp4",
   "source": "dvids:681927",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-717972.mp4",
   "source": "dvids:717972",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-745750.mp4",
   "source": "dvids:745750",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-746904.mp4",
   "source": "dvids:746904",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-749230.mp4",
   "source": "dvids:749230",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-750689.mp4",
@@ -651,672 +651,672 @@
  {
   "file": "dvids-751827.mp4",
   "source": "dvids:751827",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-753845.mp4",
   "source": "dvids:753845",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-754394.mp4",
   "source": "dvids:754394",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-755990.mp4",
   "source": "dvids:755990",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-758879.mp4",
   "source": "dvids:758879",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-760837.mp4",
   "source": "dvids:760837",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-762431.mp4",
   "source": "dvids:762431",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-763304.mp4",
   "source": "dvids:763304",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-764173.mp4",
   "source": "dvids:764173",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-766085.mp4",
   "source": "dvids:766085",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-766150.mp4",
   "source": "dvids:766150",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-766160.mp4",
   "source": "dvids:766160",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-767194.mp4",
   "source": "dvids:767194",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-768138.mp4",
   "source": "dvids:768138",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-769131.mp4",
   "source": "dvids:769131",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-770508.mp4",
   "source": "dvids:770508",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-771195.mp4",
   "source": "dvids:771195",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-771919.mp4",
   "source": "dvids:771919",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-772628.mp4",
   "source": "dvids:772628",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-773401.mp4",
   "source": "dvids:773401",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-774939.mp4",
   "source": "dvids:774939",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-776459.mp4",
   "source": "dvids:776459",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-777786.mp4",
   "source": "dvids:777786",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-778957.mp4",
   "source": "dvids:778957",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-779761.mp4",
   "source": "dvids:779761",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-780496.mp4",
   "source": "dvids:780496",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-781163.mp4",
   "source": "dvids:781163",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-782624.mp4",
   "source": "dvids:782624",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-783429.mp4",
   "source": "dvids:783429",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-785274.mp4",
   "source": "dvids:785274",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-786935.mp4",
   "source": "dvids:786935",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-787576.mp4",
   "source": "dvids:787576",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-788502.mp4",
   "source": "dvids:788502",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-790025.mp4",
   "source": "dvids:790025",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-791006.mp4",
   "source": "dvids:791006",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-791766.mp4",
   "source": "dvids:791766",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-792705.mp4",
   "source": "dvids:792705",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-793972.mp4",
   "source": "dvids:793972",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-794583.mp4",
   "source": "dvids:794583",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-799677.mp4",
   "source": "dvids:799677",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-800468.mp4",
   "source": "dvids:800468",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-800567.mp4",
   "source": "dvids:800567",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-801501.mp4",
   "source": "dvids:801501",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-804327.mp4",
   "source": "dvids:804327",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-804708.mp4",
   "source": "dvids:804708",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-804907.mp4",
   "source": "dvids:804907",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-805519.mp4",
   "source": "dvids:805519",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-806912.mp4",
   "source": "dvids:806912",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-807679.mp4",
   "source": "dvids:807679",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-808468.mp4",
   "source": "dvids:808468",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-809450.mp4",
   "source": "dvids:809450",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-809617.mp4",
   "source": "dvids:809617",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-809969.mp4",
   "source": "dvids:809969",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-810817.mp4",
   "source": "dvids:810817",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-811623.mp4",
   "source": "dvids:811623",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-812369.mp4",
   "source": "dvids:812369",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-813053.mp4",
   "source": "dvids:813053",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-814148.mp4",
   "source": "dvids:814148",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-815979.mp4",
   "source": "dvids:815979",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-816945.mp4",
   "source": "dvids:816945",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-821767.mp4",
   "source": "dvids:821767",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-821785.mp4",
   "source": "dvids:821785",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-821818.mp4",
   "source": "dvids:821818",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-822401.mp4",
   "source": "dvids:822401",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-844557.mp4",
   "source": "dvids:844557",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-844989.mp4",
   "source": "dvids:844989",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-845596.mp4",
   "source": "dvids:845596",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-850850.mp4",
   "source": "dvids:850850",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-853879.mp4",
   "source": "dvids:853879",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-855336.mp4",
   "source": "dvids:855336",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-855354.mp4",
   "source": "dvids:855354",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-857141.mp4",
   "source": "dvids:857141",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-859204.mp4",
   "source": "dvids:859204",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-863929.mp4",
   "source": "dvids:863929",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-878795.mp4",
   "source": "dvids:878795",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-885195.mp4",
   "source": "dvids:885195",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-887738.mp4",
   "source": "dvids:887738",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-892056.mp4",
   "source": "dvids:892056",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-899149.mp4",
   "source": "dvids:899149",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-904310.mp4",
   "source": "dvids:904310",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-904311.mp4",
   "source": "dvids:904311",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-904930.mp4",
   "source": "dvids:904930",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-911251.mp4",
   "source": "dvids:911251",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-911990.mp4",
   "source": "dvids:911990",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-911992.mp4",
   "source": "dvids:911992",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-924186.mp4",
   "source": "dvids:924186",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-927860.mp4",
   "source": "dvids:927860",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-932974.mp4",
   "source": "dvids:932974",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-943062.mp4",
   "source": "dvids:943062",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-944321.mp4",
   "source": "dvids:944321",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-947117.mp4",
   "source": "dvids:947117",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-948343.mp4",
   "source": "dvids:948343",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-948447.mp4",
   "source": "dvids:948447",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-948461.mp4",
   "source": "dvids:948461",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-951126.mp4",
   "source": "dvids:951126",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-951784.mp4",
   "source": "dvids:951784",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-952758.mp4",
   "source": "dvids:952758",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-952762.mp4",
   "source": "dvids:952762",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-963010.mp4",
   "source": "dvids:963010",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-963011.mp4",
   "source": "dvids:963011",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-963021.mp4",
   "source": "dvids:963021",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-963082.mp4",
   "source": "dvids:963082",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-963091.mp4",
   "source": "dvids:963091",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-963093.mp4",
   "source": "dvids:963093",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-963104.mp4",
   "source": "dvids:963104",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-963130.mp4",
   "source": "dvids:963130",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-963132.mp4",
   "source": "dvids:963132",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-966085.mp4",
   "source": "dvids:966085",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-967295.mp4",
   "source": "dvids:967295",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-968176.mp4",
   "source": "dvids:968176",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-970647.mp4",
   "source": "dvids:970647",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-973081.mp4",
   "source": "dvids:973081",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-973233.mp4",
   "source": "dvids:973233",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-975576.mp4",
   "source": "dvids:975576",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-975659.mp4",
   "source": "dvids:975659",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-986103.mp4",
   "source": "dvids:986103",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-986185.mp4",
   "source": "dvids:986185",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-986949.mp4",
   "source": "dvids:986949",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-989054.mp4",
   "source": "dvids:989054",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-991435.mp4",
   "source": "dvids:991435",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-991879.mp4",
   "source": "dvids:991879",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-992598.mp4",
   "source": "dvids:992598",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-992601.mp4",
   "source": "dvids:992601",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-1002955.mp4",
   "source": "dvids:1002955",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-1005867.mp4",
   "source": "dvids:1005867",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-1006964.mp4",
   "source": "dvids:1006964",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-1007073.mp4",
   "source": "dvids:1007073",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-1007531.mp4",
   "source": "dvids:1007531",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-1012046.mp4",
   "source": "dvids:1012046",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-1014197.mp4",
   "source": "dvids:1014197",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-1015256.mp4",
   "source": "dvids:1015256",
-  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-1015465.mp4",
   "source": "dvids:1015465",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-1022137.mp4",
   "source": "dvids:1022137",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-1025331.mp4",
   "source": "dvids:1025331",
-  "reject": "no steady running cadence detected (not yet transcribed)"
+  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
  },
  {
   "file": "dvids-749248.mp4",
