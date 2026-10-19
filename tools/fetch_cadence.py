@@ -7,13 +7,18 @@ Sources:
   dvids:<id>          a DVIDS video (US Gov work, public domain)
   commons:<File name> a Wikimedia Commons file (license read from Commons)
 
-Usage:  python tools/fetch_cadence.py
+Rejected sources are skipped. Name sources to fetch only those (any part of
+the file name or source, e.g. dvids:827771), including a rejected one you
+want to re-check.
+
+Usage:  python tools/fetch_cadence.py [source ...]
 """
 import html
 import json
 import os
 import pathlib
 import re
+import sys
 import urllib.parse
 import urllib.request
 
@@ -66,7 +71,12 @@ def commons(name):
 def main():
     STAGING.mkdir(parents=True, exist_ok=True)
     manifest = []
+    wanted = sys.argv[1:]
     for s in json.loads(SOURCES.read_text(encoding="utf-8")):
+        if wanted and not any(w in s["file"] or w in s["source"] for w in wanted):
+            continue
+        if s.get("reject") and not wanted:
+            continue
         kind, ref = s["source"].split(":", 1)
         try:
             m = dvids(ref) if kind == "dvids" else commons(ref)

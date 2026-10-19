@@ -44,7 +44,13 @@
   "file": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1.mp4",
   "source": "dvids:827771",
   "kind": "running",
-  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
+  "clips": [
+   [
+    410,
+    480
+   ]
+  ],
+  "note": "bounds picked by Mat by ear; transcript of the group singing was unreadable"
  },
  {
   "file": "dvids-836249-battalion-run.mp4",
@@ -115,7 +121,7 @@
  {
   "file": "dvids-1020984-kw26-bravo-company-cadences.mp4",
   "source": "dvids:1020984",
-  "reject": "whole video transcribed: no sung running cadence (speech, PT counting, crowd noise, yelling)"
+  "reject": "listened (Mat): no good"
  },
  {
   "file": "dvids-301946-cadence-contest-2013-old-man-james.mp4",

@@ -50,12 +50,6 @@
  },
  {
   "file": null,
-  "from": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1.mp4",
-  "bpm": null,
-  "rejected": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
- },
- {
-  "file": null,
   "from": "dvids-836249-battalion-run.mp4",
   "bpm": null,
   "rejected": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
@@ -718,5 +712,18 @@
   "start": 0,
   "seconds": 52,
   "bpm": 164
+ },
+ {
+  "file": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1-1.mp3",
+  "from": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1.mp4",
+  "title": "Army 10-Mile Run & COB Speicher Group Run, Part 1",
+  "artist": "145th Mobile Public Affairs Detachment",
+  "license": "Public domain (US Gov, DVIDS)",
+  "license_url": "https://www.usa.gov/government-copyright",
+  "source_url": "https://www.dvidshub.net/video/827771/army-10-mile-run-cob-speicher-group-run-part-1",
+  "kind": "running",
+  "start": 410,
+  "seconds": 70,
+  "bpm": 161
  }
 ]
