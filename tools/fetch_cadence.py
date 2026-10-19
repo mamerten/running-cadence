@@ -11,6 +11,7 @@ Usage:  python tools/fetch_cadence.py
 """
 import html
 import json
+import os
 import pathlib
 import re
 import urllib.parse
@@ -18,9 +19,11 @@ import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SOURCES = ROOT / "tools" / "cadence-sources.json"
-STAGING = ROOT / "staging" / "cadence"
+# Source videos are big; set CADENCE_STAGING to keep them out of a synced folder.
+STAGING = pathlib.Path(os.environ.get("CADENCE_STAGING") or ROOT / "staging" / "cadence")
 UA = {"User-Agent": "running-cadence/1.0 (https://github.com/mamerten/running-cadence)"}
-BROWSER_UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
+MAX_BYTES = 400 << 20     # skip giant full-resolution masters
+BROWSER_UA ={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
 
 
 def get(url, headers=UA):
@@ -43,7 +46,8 @@ def dvids(vid):
     unit = re.search(r'class="the_unit"><a[^>]*>([^<]+)</a>', page)
     credit = ", ".join(html.unescape(m.group(1)).strip() for m in (by, unit) if m) or "U.S. military"
     return {"title": re.sub(r"[\"']", "", title).strip(), "credit": credit,
-            "license": "Public domain (US Gov, DVIDS)", "source_url": url, "media": mp4s[0]}
+            "license": "Public domain (US Gov, DVIDS)", "source_url": url,
+            "media": next((u for u in mp4s if "800k" in u), mp4s[0])}   # small stream when offered
 
 
 def commons(name):
@@ -72,8 +76,12 @@ def main():
         m["title"] = s.get("title") or m["title"]
         dest = STAGING / s["file"]
         if not dest.exists():
-            _, data = get(m["media"], BROWSER_UA if kind == "dvids" else UA)
-            dest.write_bytes(data)
+            req = urllib.request.Request(m["media"], headers=BROWSER_UA if kind == "dvids" else UA)
+            with urllib.request.urlopen(req, timeout=120) as r:
+                if int(r.headers.get("Content-Length") or 0) > MAX_BYTES:
+                    print(f"SKIP {s['file']}: over {MAX_BYTES >> 20} MB", flush=True)
+                    continue
+                dest.write_bytes(r.read())
         print(f"{s['file'][:60]:60} {dest.stat().st_size // 1024:7d} KB  {m['title']}", flush=True)
         manifest.append({"file": s["file"], "kind": s.get("kind", "unknown"),
                          **{k: m[k] for k in ("title", "credit", "license", "source_url")}})

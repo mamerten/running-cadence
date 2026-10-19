@@ -10,6 +10,7 @@ Usage:  python tools/import_cadence.py
 Needs:  pip install numpy av lameenc
 """
 import json
+import os
 import pathlib
 import sys
 
@@ -21,7 +22,8 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import detect_bpm  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-STAGING = ROOT / "staging" / "cadence"
+# Source videos are big; set CADENCE_STAGING to keep them out of a synced folder.
+STAGING = pathlib.Path(os.environ.get("CADENCE_STAGING") or ROOT / "staging" / "cadence")
 OUT = ROOT / "public" / "cadence"
 META = ROOT / "tools" / "cadence-tracks.json"
 SR = 44100
@@ -51,6 +53,27 @@ def encode(x, path):
     enc.set_quality(2)
     pcm = (x * 32767).astype(np.int16)
     path.write_bytes(enc.encode(pcm.tobytes()) + enc.flush())
+
+
+def music_like(x):
+    """True if a clip sounds like a music bed rather than voices and footsteps.
+
+    Edited videos often lay stock music under the footage, and its beat passes
+    the tempo check. Music carries a lot of sustained bass (40-250 Hz) and its
+    spectrum holds steady frame to frame; a called cadence has neither.
+    Calibrated on the kept clips vs the Kevin MacLeod tracks in public/free:
+    cadence clips stay under 0.21 bass / 0.67 steady (a big formation's
+    footfalls add bass), so only clear music is caught; borderline stays in.
+    """
+    x = x[:SR * 60]
+    n, hop = 4096, 2048
+    frames = np.lib.stride_tricks.sliding_window_view(x, n)[::hop] * np.hanning(n)
+    s = np.abs(np.fft.rfft(frames, axis=1)) + 1e-9
+    f = np.fft.rfftfreq(n, 1 / SR)
+    bass = np.median(s[:, (f >= 40) & (f < 250)].sum(1) / s.sum(1))
+    band = np.log(s[:, (f >= 60) & (f < 1000)])
+    steady = np.mean([np.corrcoef(band[i], band[i + 1])[0, 1] for i in range(0, len(band) - 1, 3)])
+    return bass > 0.25 or steady > 0.70
 
 
 # Clips reviewed and rejected. CPO Heritage Days: filmed under a covered
@@ -137,7 +160,10 @@ def main():
             print(f"SKIP {m['file']}: {e}", flush=True)
             continue
         segs = steady_segments(x) if len(x) >= SR * WIN else []
-        print(f"{m['file'][:60]:60} {len(x)/SR:5.0f}s  segments {[(a, b, c) for a, b, c in segs]}", flush=True)
+        music = [s for s in segs if music_like(x[s[0] * SR:s[1] * SR])]
+        segs = [s for s in segs if s not in music]
+        print(f"{m['file'][:60]:60} {len(x)/SR:5.0f}s  segments {[(a, b, c) for a, b, c in segs]}"
+              + (f"  music bed, skipped {music}" if music else ""), flush=True)
         stem = pathlib.Path(m["file"]).stem
         for n, (start, end, spm) in enumerate(segs, 1):
             name = f"{stem}-{n}.mp3"

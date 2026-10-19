@@ -17,6 +17,9 @@ back to that cadence). Plays with the iPhone screen locked.
   `python tools/import_cadence.py` keeps the stretches with a running cadence
   (150–189 spm; a caller drifting a few spm stays one clip) and writes
   `tools/cadence-tracks.json`. Delete that file first to re-import everything.
+  Clips that sound like a stock-music bed (heavy sustained bass) are skipped.
+  The source videos run to several GB: set `CADENCE_STAGING` to a folder
+  outside Dropbox (e.g. `%LOCALAPPDATA%\cadence-staging`) before running both.
 - **Your music** – drop files in `public/music/`
 
 Beats, free tracks and cadence clips are in git so Cloudflare deploys on every
