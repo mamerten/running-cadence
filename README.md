@@ -12,7 +12,9 @@ back to that cadence). Plays with the iPhone screen locked.
 - **Free music** – Kevin MacLeod (incompetech.com), CC BY 4.0; list in `tools/free-tracks.json`
   (stated BPM, cross-checked with `tools/detect_bpm.py`)
 - **Military cadence** – public-domain US military video from DVIDS / Wikimedia Commons,
-  listed in `tools/cadence-sources.json`. `pip install numpy av lameenc`, then
+  listed in `tools/cadence-sources.json`. **Read
+  [docs/military-cadence.md](docs/military-cadence.md) before changing these**:
+  where they come from, and the mistakes not to repeat. `pip install numpy av lameenc`, then
   `python tools/fetch_cadence.py` downloads them to `staging/` and
   `python tools/import_cadence.py` cuts the clips and writes
   `tools/cadence-tracks.json`. Delete that file first to re-import everything.
