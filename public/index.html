@@ -25,7 +25,9 @@
   li.bucket { display:flex; justify-content:space-between; align-items:center;
               font-size:22px; font-weight:600; padding:18px 16px; }
   li.bucket .count { color:var(--dim); font-size:14px; font-weight:400; }
-  li.bucket .cat { display:block; color:var(--dim); font-size:14px; font-weight:400; margin-top:2px; }
+  h2.group { font-size:15px; font-weight:600; color:var(--accent); text-transform:uppercase;
+             letter-spacing:.06em; margin:22px 0 0; }
+  h2.group + ul { margin-top:8px; }
   li.bucket.live { outline:2px solid var(--accent); }
   li.track .t { font-weight:500; }
   li.track .a { color:var(--dim); font-size:13px; margin-top:2px; }
@@ -65,7 +67,7 @@
     <button data-mode="both">Both</button>
     <button data-mode="music">Techno</button>
   </div>
-  <ul id="buckets"></ul>
+  <div id="buckets"></div>
   <footer>
     <a href="https://github.com/mamerten/running-cadence">GitHub: running-cadence</a>
     <details><summary>Music credits</summary><div id="credits"></div></details>
@@ -160,16 +162,26 @@ function shuffled(list) {
 function renderHome() {
   for (const btn of $('modes').children) btn.classList.toggle('on', btn.dataset.mode === mode);
   const buckets = [...new Set(tracks.map(bucketOf))].sort((a, b) => (a === 'unsorted') - (b === 'unsorted') || a - b);
-  const ul = $('buckets');
-  ul.innerHTML = '';
+  // One heading per pace group (Fast walk, Slow run, ...) with its ranges underneath.
+  const box = $('buckets');
+  box.innerHTML = '';
+  let ul = null, group = null;
   for (const b of buckets) {
     const list = inBucket(b);
     if (!list.length) continue;                 // nothing of this kind at this pace
+    if (!ul || category(b) !== group) {
+      group = category(b);
+      const h = document.createElement('h2');
+      h.className = 'group';
+      h.textContent = group || 'Other';
+      ul = document.createElement('ul');
+      box.append(h, ul);
+    }
     const n = list.filter(e => e.rate === 1).length, adj = list.length - n;
     const li = document.createElement('li');
     li.className = 'bucket' + (b === playingBucket ? ' live' : '');
     const parts = [n && `${n} track${n > 1 ? 's' : ''}`, adj && `${adj} adjusted`].filter(Boolean);
-    li.innerHTML = `<span>${label(b)}<span class="cat">${category(b)}</span></span><span class="count">${parts.join(' + ')}</span>`;
+    li.innerHTML = `<span>${label(b)}</span><span class="count">${parts.join(' + ')}</span>`;
     li.onclick = () => { location.hash = `#/${b}`; };
     ul.appendChild(li);
   }
@@ -233,9 +245,11 @@ function playAt(i) {
   pos = i;
   const e = queue[pos];
   audio.src = e.t.src;
-  // Speed nudge with pitch kept the same (webkit prefix for older Safari).
+  // Speed nudge like a turntable: pitch moves with speed (under a semitone at 4%).
+  // Safari's pitch-preserving stretch sounds warbly, so it stays off
+  // (webkit prefix for older Safari).
   // defaultPlaybackRate survives the new src loading; playbackRate applies now.
-  audio.preservesPitch = audio.webkitPreservesPitch = true;
+  audio.preservesPitch = audio.webkitPreservesPitch = false;
   audio.defaultPlaybackRate = audio.playbackRate = e.rate;
   audio.loop = queue.length === 1;              // lone track just repeats
   audio.play();
