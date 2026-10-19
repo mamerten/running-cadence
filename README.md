@@ -11,9 +11,12 @@ back to that cadence). Plays with the iPhone screen locked.
 - **Generated beats** – `tools/make_cadence_tracks.py` (drumline / rock / electro, kick on every step)
 - **Free music** – Kevin MacLeod (incompetech.com), CC BY 4.0; list in `tools/free-tracks.json`
   (stated BPM, cross-checked with `tools/detect_bpm.py`)
-- **Military cadence** – public-domain US military video from DVIDS / Wikimedia Commons.
-  `tools/import_cadence.py` pulls the audio, keeps only stretches with a steady
-  150–189 spm cadence, and writes `tools/cadence-tracks.json`
+- **Military cadence** – public-domain US military video from DVIDS / Wikimedia Commons,
+  listed in `tools/cadence-sources.json`. `pip install numpy av lameenc`, then
+  `python tools/fetch_cadence.py` downloads them to `staging/` and
+  `python tools/import_cadence.py` keeps the stretches with a running cadence
+  (150–189 spm; a caller drifting a few spm stays one clip) and writes
+  `tools/cadence-tracks.json`. Delete that file first to re-import everything.
 - **Your music** – drop files in `public/music/`
 
 Beats, free tracks and cadence clips are in git so Cloudflare deploys on every

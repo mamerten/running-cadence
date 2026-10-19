@@ -63,6 +63,11 @@ REJECT = ("cpo-herita", "cpo-selects", "dvids-1023298-", "dvids-739888-", "dvids
 WIN, HOP = 12, 4          # seconds: analysis window and step
 MIN_WINDOWS = 4           # 4 agreeing windows = at least 24 s of steady cadence
 TOLERANCE = 4             # spm a window may differ from the segment's median
+SMOOTH = 2                # neighbouring windows each side used to smooth readings
+# A real cadence drifts a little over a few minutes; that's fine for running.
+JOIN_GAP = 12             # seconds between pieces that still count as one clip
+JOIN_TOLERANCE = 10       # spm apart two neighbouring pieces may be and still join
+MIN_AGREE = 0.6           # share of raw readings that must match a clip's tempo
 
 
 def steady_segments(x):
@@ -75,10 +80,18 @@ def steady_segments(x):
     """
     a = x[::2]                                      # 22.05 kHz for analysis
     sr = detect_bpm.SR
-    reads = []
+    raw = []
     for s in range(0, max(1, len(a) - WIN * sr + 1), HOP * sr):
         bpm, _ = detect_bpm.tempo(a[s:s + WIN * sr])
-        reads.append(detect_bpm.to_cadence(bpm))
+        raw.append(detect_bpm.to_cadence(bpm))
+
+    # One noisy 12 s reading used to split a steady clip in two. Replace each
+    # reading with the median of it and its neighbours (SMOOTH each side), as
+    # long as most of them found a cadence; speech/edits still read as None.
+    reads = []
+    for i in range(len(raw)):
+        near = [r for r in raw[max(0, i - SMOOTH):i + SMOOTH + 1] if r is not None]
+        reads.append(int(np.median(near)) if raw[i] is not None and len(near) > SMOOTH else None)
 
     segments, run = [], []
     for i, c in enumerate(reads + [None]):
@@ -90,16 +103,23 @@ def steady_segments(x):
             segments.append((first * HOP, last * HOP + WIN, int(round(np.median([r for _, r in run])))))
         run = [(i, c)] if c is not None else []
 
-    # A slight tempo drift splits one run into overlapping pieces; join them back.
+    # A caller drifting faster or slower splits one run into touching pieces;
+    # join them back when they're close in time and tempo.
     merged = []
     for s in segments:
-        if merged and s[0] <= merged[-1][1] and abs(s[2] - merged[-1][2]) <= TOLERANCE:
+        if merged and s[0] <= merged[-1][1] + JOIN_GAP and abs(s[2] - merged[-1][2]) <= JOIN_TOLERANCE:
             p = merged[-1]
             w0, w1 = p[1] - p[0], s[1] - s[0]
             merged[-1] = (p[0], s[1], int(round((p[2] * w0 + s[2] * w1) / (w0 + w1))))
         else:
             merged.append(s)
-    return merged
+
+    # Smoothing can turn scattered noise into a short false "cadence"; keep a
+    # clip only if most of its unsmoothed readings really are near its tempo.
+    def agree(seg):
+        w = raw[seg[0] // HOP:(seg[1] - WIN) // HOP + 1]
+        return sum(r is not None and abs(r - seg[2]) <= TOLERANCE for r in w) / len(w)
+    return [s for s in merged if agree(s) >= MIN_AGREE]
 
 
 def main():

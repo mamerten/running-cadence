@@ -10,9 +10,17 @@
   "bpm": null
  },
  {
-  "file": null,
+  "file": "dvids-416272-cstc-a-command-sgt-maj-leads-nco-run-in-kabul-1.mp3",
   "from": "dvids-416272-cstc-a-command-sgt-maj-leads-nco-run-in-kabul.mp4",
-  "bpm": null
+  "title": "CSTC-A Command Sgt. Maj. Leads NCO Run in Kabul",
+  "artist": "Lt.j.g. Charity Edgar, Resolute Support Headquarters",
+  "license": "Public domain (US Gov, DVIDS)",
+  "license_url": "https://www.usa.gov/government-copyright",
+  "source_url": "https://www.dvidshub.net/video/416272/cstc-command-sgt-maj-leads-nco-run-kabul",
+  "kind": "unknown",
+  "start": 0,
+  "seconds": 24,
+  "bpm": 169
  },
  {
   "file": null,
@@ -45,27 +53,66 @@
  {
   "file": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1-1.mp3",
   "from": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1.mp4",
-  "title": "Army 10-Mile Run & COB Speicher Group Run, Part 1",
-  "artist": "U.S. military",
+  "title": "Army 10-Mile Run & COB Speicher Group Run, Part 1 (part 1)",
+  "artist": "145th Mobile Public Affairs Detachment",
   "license": "Public domain (US Gov, DVIDS)",
   "license_url": "https://www.usa.gov/government-copyright",
   "source_url": "https://www.dvidshub.net/video/827771/army-10-mile-run-cob-speicher-group-run-part-1",
   "kind": "running",
-  "start": 440,
-  "seconds": 76,
-  "bpm": 160
+  "start": 180,
+  "seconds": 24,
+  "bpm": 177
+ },
+ {
+  "file": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1-2.mp3",
+  "from": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1.mp4",
+  "title": "Army 10-Mile Run & COB Speicher Group Run, Part 1 (part 2)",
+  "artist": "145th Mobile Public Affairs Detachment",
+  "license": "Public domain (US Gov, DVIDS)",
+  "license_url": "https://www.usa.gov/government-copyright",
+  "source_url": "https://www.dvidshub.net/video/827771/army-10-mile-run-cob-speicher-group-run-part-1",
+  "kind": "running",
+  "start": 220,
+  "seconds": 24,
+  "bpm": 157
+ },
+ {
+  "file": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1-3.mp3",
+  "from": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1.mp4",
+  "title": "Army 10-Mile Run & COB Speicher Group Run, Part 1 (part 3)",
+  "artist": "145th Mobile Public Affairs Detachment",
+  "license": "Public domain (US Gov, DVIDS)",
+  "license_url": "https://www.usa.gov/government-copyright",
+  "source_url": "https://www.dvidshub.net/video/827771/army-10-mile-run-cob-speicher-group-run-part-1",
+  "kind": "running",
+  "start": 328,
+  "seconds": 24,
+  "bpm": 183
+ },
+ {
+  "file": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1-4.mp3",
+  "from": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1.mp4",
+  "title": "Army 10-Mile Run & COB Speicher Group Run, Part 1 (part 4)",
+  "artist": "145th Mobile Public Affairs Detachment",
+  "license": "Public domain (US Gov, DVIDS)",
+  "license_url": "https://www.usa.gov/government-copyright",
+  "source_url": "https://www.dvidshub.net/video/827771/army-10-mile-run-cob-speicher-group-run-part-1",
+  "kind": "running",
+  "start": 436,
+  "seconds": 88,
+  "bpm": 161
  },
  {
   "file": "dvids-836249-battalion-run-1.mp3",
   "from": "dvids-836249-battalion-run.mp4",
   "title": "Battalion Run",
-  "artist": "Staff Sgt. Daphney Black, Mountain Ranger Battalion (Army ROTC)",
+  "artist": "Staff Sgt. Daphney Black, Mountain Ranger Battalion",
   "license": "Public domain (US Gov, DVIDS)",
   "license_url": "https://www.usa.gov/government-copyright",
   "source_url": "https://www.dvidshub.net/video/836249/battalion-run",
   "kind": "running",
   "start": 0,
-  "seconds": 132,
+  "seconds": 136,
   "bpm": 154
  },
  {
@@ -74,9 +121,17 @@
   "bpm": null
  },
  {
-  "file": null,
+  "file": "dvids-945031-kilo-co-moto-run-1.mp3",
   "from": "dvids-945031-kilo-co-moto-run.mp4",
-  "bpm": null
+  "title": "Kilo Co Moto Run",
+  "artist": "Lance Cpl. Kenneth Johnson, Marine Corps Recruit Depot, Parris Island",
+  "license": "Public domain (US Gov, DVIDS)",
+  "license_url": "https://www.usa.gov/government-copyright",
+  "source_url": "https://www.dvidshub.net/video/945031/kilo-co-moto-run",
+  "kind": "unknown",
+  "start": 4,
+  "seconds": 24,
+  "bpm": 153
  },
  {
   "file": null,
@@ -91,28 +146,15 @@
  {
   "file": "commons-army-rock-steady-cadence-1.mp3",
   "from": "commons-army-rock-steady-cadence.webm",
-  "title": "Rock Steady Cadence (part 1)",
-  "artist": "The U.S. Army (official U.S. Army YouTube channel; mirrored to Commons by user Eatcha)",
-  "license": "CC BY 3.0 (released by The U.S. Army; also a US Gov work), via Wikimedia Commons",
+  "title": "Rock Steady Cadence",
+  "artist": "The U.S. Army",
+  "license": "CC BY 3.0, via Wikimedia Commons",
   "license_url": "https://www.usa.gov/government-copyright",
   "source_url": "https://commons.wikimedia.org/wiki/File:Rock_Steady_Cadence_ao44xoD-bt4.webm",
   "kind": "unknown",
-  "start": 4,
-  "seconds": 28,
-  "bpm": 164
- },
- {
-  "file": "commons-army-rock-steady-cadence-2.mp3",
-  "from": "commons-army-rock-steady-cadence.webm",
-  "title": "Rock Steady Cadence (part 2)",
-  "artist": "The U.S. Army (official U.S. Army YouTube channel; mirrored to Commons by user Eatcha)",
-  "license": "CC BY 3.0 (released by The U.S. Army; also a US Gov work), via Wikimedia Commons",
-  "license_url": "https://www.usa.gov/government-copyright",
-  "source_url": "https://commons.wikimedia.org/wiki/File:Rock_Steady_Cadence_ao44xoD-bt4.webm",
-  "kind": "unknown",
-  "start": 72,
-  "seconds": 48,
-  "bpm": 157
+  "start": 0,
+  "seconds": 120,
+  "bpm": 161
  },
  {
   "file": null,
@@ -146,7 +188,7 @@
   "file": "dvids-301946-cadence-contest-2013-old-man-james-1.mp3",
   "from": "dvids-301946-cadence-contest-2013-old-man-james.mp4",
   "title": "Cadence Contest 2013: Old Man James",
-  "artist": "CWO Donnie Brzuska, USCG Training Center Cape May",
+  "artist": "Chief Warrant Officer Donnie Brzuska, U.S. Coast Guard Training Center Cape May",
   "license": "Public domain (US Gov, DVIDS)",
   "license_url": "https://www.usa.gov/government-copyright",
   "source_url": "https://www.dvidshub.net/video/301946/cadence-contest-2013-old-man-james",
@@ -159,14 +201,14 @@
   "file": "dvids-302054-cadence-contest-2013-turn-it-up-1.mp3",
   "from": "dvids-302054-cadence-contest-2013-turn-it-up.mp4",
   "title": "Cadence Contest 2013: Turn It Up!",
-  "artist": "CWO Donnie Brzuska, USCG Training Center Cape May",
+  "artist": "Chief Warrant Officer Donnie Brzuska, U.S. Coast Guard Training Center Cape May",
   "license": "Public domain (US Gov, DVIDS)",
   "license_url": "https://www.usa.gov/government-copyright",
   "source_url": "https://www.dvidshub.net/video/302054/cadence-contest-2013-turn-up",
   "kind": "marching",
-  "start": 8,
-  "seconds": 96,
-  "bpm": 163
+  "start": 0,
+  "seconds": 120,
+  "bpm": 165
  },
  {
   "file": null,
@@ -176,28 +218,15 @@
  {
   "file": "dvids-302320-cadence-contest-2013-the-sar-call-1.mp3",
   "from": "dvids-302320-cadence-contest-2013-the-sar-call.mp4",
-  "title": "Cadence Contest 2013: The SAR Call (part 1)",
-  "artist": "CWO Donnie Brzuska, USCG Training Center Cape May",
+  "title": "Cadence Contest 2013: The SAR Call",
+  "artist": "Chief Warrant Officer Donnie Brzuska, U.S. Coast Guard Training Center Cape May",
   "license": "Public domain (US Gov, DVIDS)",
   "license_url": "https://www.usa.gov/government-copyright",
   "source_url": "https://www.dvidshub.net/video/302320/cadence-contest-2013-sar-call",
   "kind": "marching",
   "start": 0,
-  "seconds": 52,
-  "bpm": 164
- },
- {
-  "file": "dvids-302320-cadence-contest-2013-the-sar-call-2.mp3",
-  "from": "dvids-302320-cadence-contest-2013-the-sar-call.mp4",
-  "title": "Cadence Contest 2013: The SAR Call (part 2)",
-  "artist": "CWO Donnie Brzuska, USCG Training Center Cape May",
-  "license": "Public domain (US Gov, DVIDS)",
-  "license_url": "https://www.usa.gov/government-copyright",
-  "source_url": "https://www.dvidshub.net/video/302320/cadence-contest-2013-sar-call",
-  "kind": "marching",
-  "start": 60,
-  "seconds": 72,
-  "bpm": 161
+  "seconds": 132,
+  "bpm": 163
  },
  {
   "file": null,
@@ -205,9 +234,17 @@
   "bpm": null
  },
  {
-  "file": null,
+  "file": "dvids-317750-cadence-contest-2012-high-side-right-side-1.mp3",
   "from": "dvids-317750-cadence-contest-2012-high-side-right-side.mp4",
-  "bpm": null
+  "title": "Cadence Contest 2012 - High Side Right Side",
+  "artist": "Chief Warrant Officer Donnie Brzuska, U.S. Coast Guard East",
+  "license": "Public domain (US Gov, DVIDS)",
+  "license_url": "https://www.usa.gov/government-copyright",
+  "source_url": "https://www.dvidshub.net/video/317750/cadence-contest-2012-high-side-right-side",
+  "kind": "unknown",
+  "start": 24,
+  "seconds": 84,
+  "bpm": 162
  },
  {
   "file": null,
@@ -218,7 +255,7 @@
   "file": "dvids-317752-cadence-contest-2012-victory-1.mp3",
   "from": "dvids-317752-cadence-contest-2012-victory.mp4",
   "title": "Cadence Contest 2012 - Victory",
-  "artist": "CWO Donnie Brzuska, U.S. Coast Guard",
+  "artist": "Chief Warrant Officer Donnie Brzuska, U.S. Coast Guard East",
   "license": "Public domain (US Gov, DVIDS)",
   "license_url": "https://www.usa.gov/government-copyright",
   "source_url": "https://www.dvidshub.net/video/317752/cadence-contest-2012-victory",
@@ -231,7 +268,7 @@
   "file": "dvids-317753-cadence-contest-2012-your-son-is-gone-1.mp3",
   "from": "dvids-317753-cadence-contest-2012-your-son-is-gone.mp4",
   "title": "Cadence Contest 2012 - Your Son is Gone",
-  "artist": "CWO Donnie Brzuska, U.S. Coast Guard",
+  "artist": "Chief Warrant Officer Donnie Brzuska, U.S. Coast Guard East",
   "license": "Public domain (US Gov, DVIDS)",
   "license_url": "https://www.usa.gov/government-copyright",
   "source_url": "https://www.dvidshub.net/video/317753/cadence-contest-2012-your-son-gone",
@@ -246,9 +283,17 @@
   "bpm": null
  },
  {
-  "file": null,
+  "file": "dvids-485738-drill-instructor-cadence-calling-contest-1.mp3",
   "from": "dvids-485738-drill-instructor-cadence-calling-contest.mp4",
-  "bpm": null
+  "title": "Drill Instructor Cadence Calling Contest",
+  "artist": "Lance Cpl. Kailey Maraglia, Marine Corps Recruit Depot, San Diego",
+  "license": "Public domain (US Gov, DVIDS)",
+  "license_url": "https://www.usa.gov/government-copyright",
+  "source_url": "https://www.dvidshub.net/video/485738/drill-instructor-cadence-calling-contest",
+  "kind": "unknown",
+  "start": 40,
+  "seconds": 32,
+  "bpm": 184
  },
  {
   "file": null,
@@ -288,6 +333,11 @@
  {
   "file": null,
   "from": "dvids-956331-marching-to-success-how-rsp-builds-future-soldiers.mp4",
+  "bpm": null
+ },
+ {
+  "file": null,
+  "from": "commons-dod-fort-jackson-bct-part-25-cadence.ogv",
   "bpm": null
  }
 ]
