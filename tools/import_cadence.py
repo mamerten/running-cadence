@@ -1,10 +1,14 @@
 """Turn downloaded military cadence clips (video or audio) into player tracks.
 
-Reads  staging/cadence/manifest.json  (written by the search step)
+Reads  staging/cadence/manifest.json  (written by tools/fetch_cadence.py)
 Writes public/cadence/<name>.mp3 and tools/cadence-tracks.json
 
-For each clip: decode the audio, find stretches with a steady running
-cadence (see steady_segments), and save each as a normalized 96 kbps MP3.
+Sources reviewed by hand (tools/cadence-sources.json) carry "clips" (exact
+start/end seconds of each complete sung cadence) or "reject" (why it's out).
+Unreviewed sources fall back to steady_segments, which finds stretches with
+a steady beat but can't tell a cadence from a speech over a band, so review
+its output (e.g. transcribe it) before keeping it. Each clip is saved as a
+normalized 96 kbps MP3.
 
 Usage:  python tools/import_cadence.py
 Needs:  pip install numpy av lameenc
@@ -26,6 +30,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 STAGING = pathlib.Path(os.environ.get("CADENCE_STAGING") or ROOT / "staging" / "cadence")
 OUT = ROOT / "public" / "cadence"
 META = ROOT / "tools" / "cadence-tracks.json"
+SOURCES = ROOT / "tools" / "cadence-sources.json"
 SR = 44100
 
 
@@ -145,23 +150,42 @@ def steady_segments(x):
     return [s for s in merged if agree(s) >= MIN_AGREE]
 
 
+def clip_tempo(x):
+    """Median cadence (spm) over a hand-picked clip, or None if no beat reads."""
+    a, sr = x[::2], detect_bpm.SR
+    reads = [detect_bpm.to_cadence(detect_bpm.tempo(a[s:s + WIN * sr])[0])
+             for s in range(0, max(1, len(a) - WIN * sr + 1), HOP * sr)]
+    reads = [r for r in reads if r is not None]
+    return int(round(np.median(reads))) if reads else None
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     manifest = json.loads((STAGING / "manifest.json").read_text(encoding="utf-8"))
     existing = ({t["file"] or f"none:{t['from']}": t for t in json.loads(META.read_text())}
                 if META.exists() else {})
     done = {t["from"] for t in existing.values()}
+    review = {s["file"]: s for s in json.loads(SOURCES.read_text(encoding="utf-8"))}
     for m in manifest:
+        m = {**m, **{k: v for k, v in review.get(m["file"], {}).items() if k in ("clips", "reject")}}
         if m["file"] in done or any(r in m["file"] for r in REJECT):
+            continue
+        if m.get("reject"):
+            existing[f"none:{m['file']}"] = {"file": None, "from": m["file"], "bpm": None,
+                                             "rejected": m["reject"]}
             continue
         try:
             x = decode_all(STAGING / m["file"])
         except Exception as e:  # damaged or unsupported file
             print(f"SKIP {m['file']}: {e}", flush=True)
             continue
-        segs = steady_segments(x) if len(x) >= SR * WIN else []
-        music = [s for s in segs if music_like(x[s[0] * SR:s[1] * SR])]
-        segs = [s for s in segs if s not in music]
+        if m.get("clips"):                           # reviewed: exact sung stretches
+            segs = [(a, min(b, len(x) // SR), clip_tempo(x[a * SR:b * SR])) for a, b in m["clips"]]
+            segs, music = [s for s in segs if s[2]], []
+        else:
+            segs = steady_segments(x) if len(x) >= SR * WIN else []
+            music = [s for s in segs if music_like(x[s[0] * SR:s[1] * SR])]
+            segs = [s for s in segs if s not in music]
         print(f"{m['file'][:60]:60} {len(x)/SR:5.0f}s  segments {[(a, b, c) for a, b, c in segs]}"
               + (f"  music bed, skipped {music}" if music else ""), flush=True)
         stem = pathlib.Path(m["file"]).stem

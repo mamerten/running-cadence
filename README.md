@@ -14,12 +14,15 @@ back to that cadence). Plays with the iPhone screen locked.
 - **Military cadence** – public-domain US military video from DVIDS / Wikimedia Commons,
   listed in `tools/cadence-sources.json`. `pip install numpy av lameenc`, then
   `python tools/fetch_cadence.py` downloads them to `staging/` and
-  `python tools/import_cadence.py` keeps the stretches with a running cadence
-  (150–189 spm; a caller drifting a few spm stays one clip) and writes
+  `python tools/import_cadence.py` cuts the clips and writes
   `tools/cadence-tracks.json`. Delete that file first to re-import everything.
-  Clips that sound like a stock-music bed (heavy sustained bass) are skipped.
-  The source videos run to several GB: set `CADENCE_STAGING` to a folder
-  outside Dropbox (e.g. `%LOCALAPPDATA%\cadence-staging`) before running both.
+  Every source has been reviewed: `clips` holds the start/end of each complete
+  sung cadence, `reject` says why a video is out (speech, crowd noise,
+  marching pace ~115 steps/min, duplicate). The beat detector alone can't
+  tell a cadence from a speech over a band, so for a new source, transcribe
+  it (faster-whisper works) and check the beat is at running pace before
+  adding `clips`. The source videos run to several GB: set `CADENCE_STAGING`
+  to a folder outside Dropbox (e.g. `%LOCALAPPDATA%\cadence-staging`).
 - **Your music** – drop files in `public/music/`
 
 Beats, free tracks and cadence clips are in git so Cloudflare deploys on every

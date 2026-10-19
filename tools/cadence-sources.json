@@ -1,1012 +1,1331 @@
 [
  {
   "file": "dvids-1011055-charlie-company-moto-run.mp4",
-  "source": "dvids:1011055"
+  "source": "dvids:1011055",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-125348-9-11-tribute-run.mp4",
-  "source": "dvids:125348"
+  "source": "dvids:125348",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-416272-cstc-a-command-sgt-maj-leads-nco-run-in-kabul.mp4",
-  "source": "dvids:416272"
+  "source": "dvids:416272",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-491640-2016-marine-corps-birthday-run.mp4",
-  "source": "dvids:491640"
+  "source": "dvids:491640",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-576992-3rd-mlg-holiday-cadence-run-2017.mp4",
   "source": "dvids:576992",
-  "kind": "running"
+  "kind": "running",
+  "clips": [
+   [
+    0,
+    58
+   ]
+  ]
  },
  {
   "file": "dvids-619210-run-back-cadence.mp4",
-  "source": "dvids:619210"
+  "source": "dvids:619210",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-817756-golf-company-motivational-run.mp4",
-  "source": "dvids:817756"
+  "source": "dvids:817756",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-827771-army-10-mile-run-cob-speicher-group-run-part-1.mp4",
   "source": "dvids:827771",
-  "kind": "running"
+  "kind": "running",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-836249-battalion-run.mp4",
   "source": "dvids:836249",
-  "kind": "running"
+  "kind": "running",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-898596-lance-cpl-hasanein-alrushdawi-obstacle-course-and-cbrn-train.mp4",
-  "source": "dvids:898596"
+  "source": "dvids:898596",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-945031-kilo-co-moto-run.mp4",
-  "source": "dvids:945031"
+  "source": "dvids:945031",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-968151-b-roll-vicenza-military-community-celebrates-250-years-of-us.mp4",
-  "source": "dvids:968151"
+  "source": "dvids:968151",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "commons-army-old-lady-cadence.webm",
   "source": "commons:Old_Lady_Cadence_qUqVKUeXVjc.webm",
-  "title": "Old Lady Cadence"
+  "title": "Old Lady Cadence",
+  "clips": [
+   [
+    0,
+    58
+   ]
+  ]
  },
  {
   "file": "commons-army-rock-steady-cadence.webm",
   "source": "commons:Rock_Steady_Cadence_ao44xoD-bt4.webm",
   "title": "Rock Steady Cadence",
-  "kind": "unknown"
+  "kind": "unknown",
+  "clips": [
+   [
+    0,
+    120
+   ]
+  ]
  },
  {
   "file": "commons-army-the-army-colors-cadence.webm",
   "source": "commons:The_Army_Colors_Cadence_4I_3MhLAmlk.webm",
-  "title": "The Army Colors Cadence"
+  "title": "The Army Colors Cadence",
+  "reject": "marching cadence (~115 steps/min), too slow for running"
  },
  {
   "file": "dvids-706548-airborne-cadence-2019.mp4",
   "source": "dvids:706548",
-  "kind": "unknown"
+  "kind": "unknown",
+  "clips": [
+   [
+    0,
+    58
+   ]
+  ]
  },
  {
   "file": "dvids-846449-1st-battalion-222d-aviation-regiment-soldiers-call-cadence.mp4",
-  "source": "dvids:846449"
+  "source": "dvids:846449",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-1020984-kw26-bravo-company-cadences.mp4",
-  "source": "dvids:1020984"
+  "source": "dvids:1020984",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-301946-cadence-contest-2013-old-man-james.mp4",
   "source": "dvids:301946",
-  "kind": "marching"
+  "kind": "marching",
+  "reject": "marching cadence (~115 steps/min), too slow for running"
  },
  {
   "file": "dvids-302054-cadence-contest-2013-turn-it-up.mp4",
   "source": "dvids:302054",
-  "kind": "marching"
+  "kind": "marching",
+  "clips": [
+   [
+    0,
+    121
+   ]
+  ]
  },
  {
   "file": "dvids-302207-cadence-contest-2013-in-the-coast-guard.mp4",
-  "source": "dvids:302207"
+  "source": "dvids:302207",
+  "reject": "marching cadence (~115 steps/min), too slow for running"
  },
  {
   "file": "dvids-302320-cadence-contest-2013-the-sar-call.mp4",
   "source": "dvids:302320",
-  "kind": "marching"
+  "kind": "marching",
+  "clips": [
+   [
+    0,
+    134
+   ]
+  ]
  },
  {
   "file": "dvids-317749-cadence-contest-2012-upon-the-water.mp4",
-  "source": "dvids:317749"
+  "source": "dvids:317749",
+  "reject": "marching cadence (~115 steps/min), too slow for running"
  },
  {
   "file": "dvids-317750-cadence-contest-2012-high-side-right-side.mp4",
-  "source": "dvids:317750"
+  "source": "dvids:317750",
+  "clips": [
+   [
+    0,
+    127
+   ]
+  ]
  },
  {
   "file": "dvids-317751-cadence-contest-2012-coast-guard-on-the-scene.mp4",
-  "source": "dvids:317751"
+  "source": "dvids:317751",
+  "reject": "marching cadence (~115 steps/min), too slow for running"
  },
  {
   "file": "dvids-317752-cadence-contest-2012-victory.mp4",
   "source": "dvids:317752",
-  "kind": "marching"
+  "kind": "marching",
+  "reject": "marching cadence (~115 steps/min), too slow for running"
  },
  {
   "file": "dvids-317753-cadence-contest-2012-your-son-is-gone.mp4",
   "source": "dvids:317753",
-  "kind": "marching"
+  "kind": "marching",
+  "reject": "marching cadence (~115 steps/min), too slow for running"
  },
  {
   "file": "dvids-348130-b-roll-of-warrior-diplomats-join-round-rock-in-independence.mp4",
-  "source": "dvids:348130"
+  "source": "dvids:348130",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-485738-drill-instructor-cadence-calling-contest.mp4",
-  "source": "dvids:485738"
+  "source": "dvids:485738",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-742963-getting-ready-to-train-conducting-tactical-combat-casualty-c.mp4",
-  "source": "dvids:742963"
+  "source": "dvids:742963",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-777486-cadence-winner-receives-coin.mp4",
-  "source": "dvids:777486"
+  "source": "dvids:777486",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-777613-cadence-competition-drill-sgt-johnson.mp4",
-  "source": "dvids:777613"
+  "source": "dvids:777613",
+  "reject": "marching cadence (~115 steps/min), too slow for running"
  },
  {
   "file": "dvids-777616-cadence-competition-drill-sgt-bouchard.mp4",
-  "source": "dvids:777616"
+  "source": "dvids:777616",
+  "reject": "marching cadence (~115 steps/min), too slow for running"
  },
  {
   "file": "dvids-777617-cadence-competition-drill-sgt-moses.mp4",
-  "source": "dvids:777617"
+  "source": "dvids:777617",
+  "reject": "marching cadence (~115 steps/min), too slow for running"
  },
  {
   "file": "dvids-777618-cadence-competition-drill-sgt-wilcox.mp4",
-  "source": "dvids:777618"
+  "source": "dvids:777618",
+  "reject": "marching cadence (~115 steps/min), too slow for running"
  },
  {
   "file": "dvids-942906-yankee-204-marching.mp4",
-  "source": "dvids:942906"
+  "source": "dvids:942906",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-956331-marching-to-success-how-rsp-builds-future-soldiers.mp4",
-  "source": "dvids:956331"
+  "source": "dvids:956331",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "commons-dod-fort-jackson-bct-part-25-cadence.ogv",
   "source": "commons:DOD_100048037_Fort_Jackson_BCT,_Part_25_cadence.ogv",
-  "title": "Fort Jackson BCT, Part 25 (cadence)"
+  "title": "Fort Jackson BCT, Part 25 (cadence)",
+  "reject": "marching cadence (~115 steps/min), too slow for running"
  },
  {
   "file": "dvids-52770.mp4",
-  "source": "dvids:52770"
+  "source": "dvids:52770",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-54670.mp4",
-  "source": "dvids:54670"
+  "source": "dvids:54670",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-58703.mp4",
-  "source": "dvids:58703"
+  "source": "dvids:58703",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-58704.mp4",
-  "source": "dvids:58704"
+  "source": "dvids:58704",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-67633.mp4",
-  "source": "dvids:67633"
+  "source": "dvids:67633",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-68919.mp4",
-  "source": "dvids:68919"
+  "source": "dvids:68919",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-89554.mp4",
-  "source": "dvids:89554"
+  "source": "dvids:89554",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-89638.mp4",
-  "source": "dvids:89638"
+  "source": "dvids:89638",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-90730.mp4",
-  "source": "dvids:90730"
+  "source": "dvids:90730",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-115519.mp4",
-  "source": "dvids:115519"
+  "source": "dvids:115519",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-115588.mp4",
-  "source": "dvids:115588"
+  "source": "dvids:115588",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-115750.mp4",
-  "source": "dvids:115750"
+  "source": "dvids:115750",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-135390.mp4",
-  "source": "dvids:135390"
+  "source": "dvids:135390",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-145065.mp4",
-  "source": "dvids:145065"
+  "source": "dvids:145065",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-146347.mp4",
-  "source": "dvids:146347"
+  "source": "dvids:146347",
+  "clips": [
+   [
+    385,
+    462
+   ]
+  ]
  },
  {
   "file": "dvids-151551.mp4",
-  "source": "dvids:151551"
+  "source": "dvids:151551",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-151761.mp4",
-  "source": "dvids:151761"
+  "source": "dvids:151761",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-156632.mp4",
-  "source": "dvids:156632"
+  "source": "dvids:156632",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-285417.mp4",
-  "source": "dvids:285417"
+  "source": "dvids:285417",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-285434.mp4",
-  "source": "dvids:285434"
+  "source": "dvids:285434",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-293930.mp4",
-  "source": "dvids:293930"
+  "source": "dvids:293930",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-299870.mp4",
-  "source": "dvids:299870"
+  "source": "dvids:299870",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-304560.mp4",
-  "source": "dvids:304560"
+  "source": "dvids:304560",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-322733.mp4",
-  "source": "dvids:322733"
+  "source": "dvids:322733",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-338023.mp4",
-  "source": "dvids:338023"
+  "source": "dvids:338023",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-338026.mp4",
-  "source": "dvids:338026"
+  "source": "dvids:338026",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-344719.mp4",
-  "source": "dvids:344719"
+  "source": "dvids:344719",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-348431.mp4",
-  "source": "dvids:348431"
+  "source": "dvids:348431",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-373754.mp4",
-  "source": "dvids:373754"
+  "source": "dvids:373754",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-401998.mp4",
-  "source": "dvids:401998"
+  "source": "dvids:401998",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-404159.mp4",
-  "source": "dvids:404159"
+  "source": "dvids:404159",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-404756.mp4",
-  "source": "dvids:404756"
+  "source": "dvids:404756",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-404889.mp4",
-  "source": "dvids:404889"
+  "source": "dvids:404889",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-404906.mp4",
-  "source": "dvids:404906"
+  "source": "dvids:404906",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-405788.mp4",
-  "source": "dvids:405788"
+  "source": "dvids:405788",
+  "clips": [
+   [
+    116,
+    244
+   ]
+  ]
  },
  {
   "file": "dvids-414363.mp4",
-  "source": "dvids:414363"
+  "source": "dvids:414363",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-428372.mp4",
-  "source": "dvids:428372"
+  "source": "dvids:428372",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-428812.mp4",
-  "source": "dvids:428812"
+  "source": "dvids:428812",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-457554.mp4",
-  "source": "dvids:457554"
+  "source": "dvids:457554",
+  "clips": [
+   [
+    0,
+    79
+   ]
+  ]
  },
  {
   "file": "dvids-461482.mp4",
-  "source": "dvids:461482"
+  "source": "dvids:461482",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-465140.mp4",
-  "source": "dvids:465140"
+  "source": "dvids:465140",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-465144.mp4",
-  "source": "dvids:465144"
+  "source": "dvids:465144",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-468680.mp4",
-  "source": "dvids:468680"
+  "source": "dvids:468680",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-468698.mp4",
-  "source": "dvids:468698"
+  "source": "dvids:468698",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-470819.mp4",
-  "source": "dvids:470819"
+  "source": "dvids:470819",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-470865.mp4",
-  "source": "dvids:470865"
+  "source": "dvids:470865",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-493242.mp4",
-  "source": "dvids:493242"
+  "source": "dvids:493242",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-493649.mp4",
-  "source": "dvids:493649"
+  "source": "dvids:493649",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-498883.mp4",
-  "source": "dvids:498883"
+  "source": "dvids:498883",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-504989.mp4",
-  "source": "dvids:504989"
+  "source": "dvids:504989",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-504993.mp4",
-  "source": "dvids:504993"
+  "source": "dvids:504993",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-520944.mp4",
-  "source": "dvids:520944"
+  "source": "dvids:520944",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-524938.mp4",
-  "source": "dvids:524938"
+  "source": "dvids:524938",
+  "clips": [
+   [
+    0,
+    100
+   ]
+  ]
  },
  {
   "file": "dvids-526333.mp4",
-  "source": "dvids:526333"
+  "source": "dvids:526333",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-526404.mp4",
-  "source": "dvids:526404"
+  "source": "dvids:526404",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-565168.mp4",
-  "source": "dvids:565168"
+  "source": "dvids:565168",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-568955.mp4",
-  "source": "dvids:568955"
+  "source": "dvids:568955",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-601342.mp4",
-  "source": "dvids:601342"
+  "source": "dvids:601342",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-602444.mp4",
-  "source": "dvids:602444"
+  "source": "dvids:602444",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-624420.mp4",
-  "source": "dvids:624420"
+  "source": "dvids:624420",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-631702.mp4",
-  "source": "dvids:631702"
+  "source": "dvids:631702",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-639146.mp4",
-  "source": "dvids:639146"
+  "source": "dvids:639146",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-649297.mp4",
-  "source": "dvids:649297"
+  "source": "dvids:649297",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-649353.mp4",
-  "source": "dvids:649353"
+  "source": "dvids:649353",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-649783.mp4",
-  "source": "dvids:649783"
+  "source": "dvids:649783",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-658979.mp4",
-  "source": "dvids:658979"
+  "source": "dvids:658979",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-671993.mp4",
-  "source": "dvids:671993"
+  "source": "dvids:671993",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-671994.mp4",
-  "source": "dvids:671994"
+  "source": "dvids:671994",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-680334.mp4",
-  "source": "dvids:680334"
+  "source": "dvids:680334",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-681908.mp4",
-  "source": "dvids:681908"
+  "source": "dvids:681908",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-681918.mp4",
-  "source": "dvids:681918"
+  "source": "dvids:681918",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-681927.mp4",
-  "source": "dvids:681927"
+  "source": "dvids:681927",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-717972.mp4",
-  "source": "dvids:717972"
+  "source": "dvids:717972",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-745750.mp4",
-  "source": "dvids:745750"
+  "source": "dvids:745750",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-746904.mp4",
-  "source": "dvids:746904"
+  "source": "dvids:746904",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-749230.mp4",
-  "source": "dvids:749230"
+  "source": "dvids:749230",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-750689.mp4",
-  "source": "dvids:750689"
+  "source": "dvids:750689",
+  "clips": [
+   [
+    0,
+    52
+   ]
+  ]
  },
  {
   "file": "dvids-751827.mp4",
-  "source": "dvids:751827"
+  "source": "dvids:751827",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-753845.mp4",
-  "source": "dvids:753845"
+  "source": "dvids:753845",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-754394.mp4",
-  "source": "dvids:754394"
+  "source": "dvids:754394",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-755990.mp4",
-  "source": "dvids:755990"
+  "source": "dvids:755990",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-758879.mp4",
-  "source": "dvids:758879"
+  "source": "dvids:758879",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-760837.mp4",
-  "source": "dvids:760837"
+  "source": "dvids:760837",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-762431.mp4",
-  "source": "dvids:762431"
+  "source": "dvids:762431",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-763304.mp4",
-  "source": "dvids:763304"
+  "source": "dvids:763304",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-764173.mp4",
-  "source": "dvids:764173"
+  "source": "dvids:764173",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-766085.mp4",
-  "source": "dvids:766085"
+  "source": "dvids:766085",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-766150.mp4",
-  "source": "dvids:766150"
+  "source": "dvids:766150",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-766160.mp4",
-  "source": "dvids:766160"
+  "source": "dvids:766160",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-767194.mp4",
-  "source": "dvids:767194"
+  "source": "dvids:767194",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-768138.mp4",
-  "source": "dvids:768138"
+  "source": "dvids:768138",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-769131.mp4",
-  "source": "dvids:769131"
+  "source": "dvids:769131",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-770508.mp4",
-  "source": "dvids:770508"
+  "source": "dvids:770508",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-771195.mp4",
-  "source": "dvids:771195"
+  "source": "dvids:771195",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-771919.mp4",
-  "source": "dvids:771919"
+  "source": "dvids:771919",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-772628.mp4",
-  "source": "dvids:772628"
+  "source": "dvids:772628",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-773401.mp4",
-  "source": "dvids:773401"
+  "source": "dvids:773401",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-774939.mp4",
-  "source": "dvids:774939"
+  "source": "dvids:774939",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-776459.mp4",
-  "source": "dvids:776459"
+  "source": "dvids:776459",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-777786.mp4",
-  "source": "dvids:777786"
+  "source": "dvids:777786",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-778957.mp4",
-  "source": "dvids:778957"
+  "source": "dvids:778957",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-779761.mp4",
-  "source": "dvids:779761"
+  "source": "dvids:779761",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-780496.mp4",
-  "source": "dvids:780496"
+  "source": "dvids:780496",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-781163.mp4",
-  "source": "dvids:781163"
+  "source": "dvids:781163",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-782624.mp4",
-  "source": "dvids:782624"
+  "source": "dvids:782624",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-783429.mp4",
-  "source": "dvids:783429"
+  "source": "dvids:783429",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-785274.mp4",
-  "source": "dvids:785274"
+  "source": "dvids:785274",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-786935.mp4",
-  "source": "dvids:786935"
+  "source": "dvids:786935",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-787576.mp4",
-  "source": "dvids:787576"
+  "source": "dvids:787576",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-788502.mp4",
-  "source": "dvids:788502"
+  "source": "dvids:788502",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-790025.mp4",
-  "source": "dvids:790025"
+  "source": "dvids:790025",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-791006.mp4",
-  "source": "dvids:791006"
+  "source": "dvids:791006",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-791766.mp4",
-  "source": "dvids:791766"
+  "source": "dvids:791766",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-792705.mp4",
-  "source": "dvids:792705"
+  "source": "dvids:792705",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-793972.mp4",
-  "source": "dvids:793972"
+  "source": "dvids:793972",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-794583.mp4",
-  "source": "dvids:794583"
+  "source": "dvids:794583",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-799677.mp4",
-  "source": "dvids:799677"
+  "source": "dvids:799677",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-800468.mp4",
-  "source": "dvids:800468"
+  "source": "dvids:800468",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-800567.mp4",
-  "source": "dvids:800567"
+  "source": "dvids:800567",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-801501.mp4",
-  "source": "dvids:801501"
+  "source": "dvids:801501",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-804327.mp4",
-  "source": "dvids:804327"
+  "source": "dvids:804327",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-804708.mp4",
-  "source": "dvids:804708"
+  "source": "dvids:804708",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-804907.mp4",
-  "source": "dvids:804907"
+  "source": "dvids:804907",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-805519.mp4",
-  "source": "dvids:805519"
+  "source": "dvids:805519",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-806912.mp4",
-  "source": "dvids:806912"
+  "source": "dvids:806912",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-807679.mp4",
-  "source": "dvids:807679"
+  "source": "dvids:807679",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-808468.mp4",
-  "source": "dvids:808468"
+  "source": "dvids:808468",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-809450.mp4",
-  "source": "dvids:809450"
+  "source": "dvids:809450",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-809617.mp4",
-  "source": "dvids:809617"
+  "source": "dvids:809617",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-809969.mp4",
-  "source": "dvids:809969"
+  "source": "dvids:809969",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-810817.mp4",
-  "source": "dvids:810817"
+  "source": "dvids:810817",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-811623.mp4",
-  "source": "dvids:811623"
+  "source": "dvids:811623",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-812369.mp4",
-  "source": "dvids:812369"
+  "source": "dvids:812369",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-813053.mp4",
-  "source": "dvids:813053"
+  "source": "dvids:813053",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-814148.mp4",
-  "source": "dvids:814148"
+  "source": "dvids:814148",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-815979.mp4",
-  "source": "dvids:815979"
+  "source": "dvids:815979",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-816945.mp4",
-  "source": "dvids:816945"
+  "source": "dvids:816945",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-821767.mp4",
-  "source": "dvids:821767"
+  "source": "dvids:821767",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-821785.mp4",
-  "source": "dvids:821785"
+  "source": "dvids:821785",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-821818.mp4",
-  "source": "dvids:821818"
+  "source": "dvids:821818",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-822401.mp4",
-  "source": "dvids:822401"
+  "source": "dvids:822401",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-844557.mp4",
-  "source": "dvids:844557"
+  "source": "dvids:844557",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-844989.mp4",
-  "source": "dvids:844989"
+  "source": "dvids:844989",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-845596.mp4",
-  "source": "dvids:845596"
+  "source": "dvids:845596",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-850850.mp4",
-  "source": "dvids:850850"
+  "source": "dvids:850850",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-853879.mp4",
-  "source": "dvids:853879"
+  "source": "dvids:853879",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-855336.mp4",
-  "source": "dvids:855336"
+  "source": "dvids:855336",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-855354.mp4",
-  "source": "dvids:855354"
+  "source": "dvids:855354",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-857141.mp4",
-  "source": "dvids:857141"
+  "source": "dvids:857141",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-859204.mp4",
-  "source": "dvids:859204"
+  "source": "dvids:859204",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-863929.mp4",
-  "source": "dvids:863929"
+  "source": "dvids:863929",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-878795.mp4",
-  "source": "dvids:878795"
+  "source": "dvids:878795",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-885195.mp4",
-  "source": "dvids:885195"
+  "source": "dvids:885195",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-887738.mp4",
-  "source": "dvids:887738"
+  "source": "dvids:887738",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-892056.mp4",
-  "source": "dvids:892056"
+  "source": "dvids:892056",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-899149.mp4",
-  "source": "dvids:899149"
+  "source": "dvids:899149",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-904310.mp4",
-  "source": "dvids:904310"
+  "source": "dvids:904310",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-904311.mp4",
-  "source": "dvids:904311"
+  "source": "dvids:904311",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-904930.mp4",
-  "source": "dvids:904930"
+  "source": "dvids:904930",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-911251.mp4",
-  "source": "dvids:911251"
+  "source": "dvids:911251",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-911990.mp4",
-  "source": "dvids:911990"
+  "source": "dvids:911990",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-911992.mp4",
-  "source": "dvids:911992"
+  "source": "dvids:911992",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-924186.mp4",
-  "source": "dvids:924186"
+  "source": "dvids:924186",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-927860.mp4",
-  "source": "dvids:927860"
+  "source": "dvids:927860",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-932974.mp4",
-  "source": "dvids:932974"
+  "source": "dvids:932974",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-943062.mp4",
-  "source": "dvids:943062"
+  "source": "dvids:943062",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-944321.mp4",
-  "source": "dvids:944321"
+  "source": "dvids:944321",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-947117.mp4",
-  "source": "dvids:947117"
+  "source": "dvids:947117",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-948343.mp4",
-  "source": "dvids:948343"
+  "source": "dvids:948343",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-948447.mp4",
-  "source": "dvids:948447"
+  "source": "dvids:948447",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-948461.mp4",
-  "source": "dvids:948461"
+  "source": "dvids:948461",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-951126.mp4",
-  "source": "dvids:951126"
+  "source": "dvids:951126",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-951784.mp4",
-  "source": "dvids:951784"
+  "source": "dvids:951784",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-952758.mp4",
-  "source": "dvids:952758"
+  "source": "dvids:952758",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-952762.mp4",
-  "source": "dvids:952762"
+  "source": "dvids:952762",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-963010.mp4",
-  "source": "dvids:963010"
+  "source": "dvids:963010",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-963011.mp4",
-  "source": "dvids:963011"
+  "source": "dvids:963011",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-963021.mp4",
-  "source": "dvids:963021"
+  "source": "dvids:963021",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-963082.mp4",
-  "source": "dvids:963082"
+  "source": "dvids:963082",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-963091.mp4",
-  "source": "dvids:963091"
+  "source": "dvids:963091",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-963093.mp4",
-  "source": "dvids:963093"
+  "source": "dvids:963093",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-963104.mp4",
-  "source": "dvids:963104"
+  "source": "dvids:963104",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-963130.mp4",
-  "source": "dvids:963130"
+  "source": "dvids:963130",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-963132.mp4",
-  "source": "dvids:963132"
+  "source": "dvids:963132",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-966085.mp4",
-  "source": "dvids:966085"
+  "source": "dvids:966085",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-967295.mp4",
-  "source": "dvids:967295"
+  "source": "dvids:967295",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-968176.mp4",
-  "source": "dvids:968176"
+  "source": "dvids:968176",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-970647.mp4",
-  "source": "dvids:970647"
+  "source": "dvids:970647",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-973081.mp4",
-  "source": "dvids:973081"
+  "source": "dvids:973081",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-973233.mp4",
-  "source": "dvids:973233"
+  "source": "dvids:973233",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-975576.mp4",
-  "source": "dvids:975576"
+  "source": "dvids:975576",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-975659.mp4",
-  "source": "dvids:975659"
+  "source": "dvids:975659",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-986103.mp4",
-  "source": "dvids:986103"
+  "source": "dvids:986103",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-986185.mp4",
-  "source": "dvids:986185"
+  "source": "dvids:986185",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-986949.mp4",
-  "source": "dvids:986949"
+  "source": "dvids:986949",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-989054.mp4",
-  "source": "dvids:989054"
+  "source": "dvids:989054",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-991435.mp4",
-  "source": "dvids:991435"
+  "source": "dvids:991435",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-991879.mp4",
-  "source": "dvids:991879"
+  "source": "dvids:991879",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-992598.mp4",
-  "source": "dvids:992598"
+  "source": "dvids:992598",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-992601.mp4",
-  "source": "dvids:992601"
+  "source": "dvids:992601",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-1002955.mp4",
-  "source": "dvids:1002955"
+  "source": "dvids:1002955",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-1005867.mp4",
-  "source": "dvids:1005867"
+  "source": "dvids:1005867",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-1006964.mp4",
-  "source": "dvids:1006964"
+  "source": "dvids:1006964",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-1007073.mp4",
-  "source": "dvids:1007073"
+  "source": "dvids:1007073",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-1007531.mp4",
-  "source": "dvids:1007531"
+  "source": "dvids:1007531",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-1012046.mp4",
-  "source": "dvids:1012046"
+  "source": "dvids:1012046",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-1014197.mp4",
-  "source": "dvids:1014197"
+  "source": "dvids:1014197",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-1015256.mp4",
-  "source": "dvids:1015256"
+  "source": "dvids:1015256",
+  "reject": "transcribed: speech, PT counting, crowd noise or yelling, no sung running cadence"
  },
  {
   "file": "dvids-1015465.mp4",
-  "source": "dvids:1015465"
+  "source": "dvids:1015465",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-1022137.mp4",
-  "source": "dvids:1022137"
+  "source": "dvids:1022137",
+  "reject": "no steady running cadence detected (not yet transcribed)"
  },
  {
   "file": "dvids-1025331.mp4",
-  "source": "dvids:1025331"
+  "source": "dvids:1025331",
+  "reject": "no steady running cadence detected (not yet transcribed)"
+ },
+ {
+  "file": "dvids-749248.mp4",
+  "source": "dvids:749248",
+  "reject": "duplicate upload of dvids:749230"
+ },
+ {
+  "file": "dvids-791772.mp4",
+  "source": "dvids:791772",
+  "reject": "duplicate upload of dvids:791766"
  }
 ]
