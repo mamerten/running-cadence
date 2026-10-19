@@ -25,6 +25,7 @@
   li.bucket { display:flex; justify-content:space-between; align-items:center;
               font-size:22px; font-weight:600; padding:18px 16px; }
   li.bucket .count { color:var(--dim); font-size:14px; font-weight:400; }
+  li.bucket .cat { display:block; color:var(--dim); font-size:14px; font-weight:400; margin-top:2px; }
   li.bucket.live { outline:2px solid var(--accent); }
   li.track .t { font-weight:500; }
   li.track .a { color:var(--dim); font-size:13px; margin-top:2px; }
@@ -33,7 +34,7 @@
   .back { background:none; padding:16px 0 0; color:var(--accent); font-size:17px; }
   .controls { display:flex; gap:10px; margin-top:16px; }
   #play { background:var(--accent); color:#111; font-weight:700; flex:2; font-size:22px; padding:18px; }
-  #shuffle { flex:1; }
+  #shuffle { flex:1; white-space:nowrap; padding:14px 8px; }
   #shuffle.on { outline:2px solid var(--accent); color:var(--accent); }
   #now { margin-top:14px; min-height:1.3em; }
   progress { width:100%; height:4px; accent-color:var(--accent); }
@@ -42,7 +43,8 @@
   .mini { position:fixed; left:0; right:0; bottom:0; z-index:10; display:flex; align-items:center; gap:12px;
           background:#000; border-top:1px solid #333;
           padding:10px 16px calc(env(safe-area-inset-bottom) + 10px); }
-  .mini button { background:var(--accent); color:#111; font-weight:700; padding:12px 0; width:96px; flex:none; }
+  .mini button { background:var(--accent); color:#111; font-weight:700; font-size:16px; padding:12px 0; width:76px; flex:none; }
+  .mini #miniNext { background:var(--row); color:var(--fg); width:64px; }
   .mini span { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   footer { color:var(--dim); font-size:13px; margin-top:28px; line-height:1.5; }
   details summary { cursor:pointer; }
@@ -77,7 +79,7 @@
   <div id="bSub" class="sub"></div>
   <div class="controls">
     <button id="play">Play</button>
-    <button id="shuffle">Shuffle</button>
+    <button id="shuffle" class="on">Shuffle: On</button>
   </div>
   <div id="now" class="sub"></div>
   <progress id="prog" value="0" max="1"></progress>
@@ -86,7 +88,7 @@
 
 <!-- Now playing: on every screen. Tap the text to jump to that cadence. -->
 <div id="mini" class="mini hidden">
-  <button id="miniPlay">Pause</button><span id="miniNow" class="sub"></span>
+  <button id="miniPlay">Pause</button><button id="miniNext">Next</button><span id="miniNow" class="sub"></span>
 </div>
 
 <audio id="audio" preload="none" playsinline></audio>
@@ -105,7 +107,7 @@ const store = {
   get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
 };
-let shuffle = store.get('shuffle', true);
+let shuffle = true;                             // on at every visit; the button only changes it for now
 let mode = store.get('mode', 'both');          // 'military' | 'both' | 'music'
 
 // Tracks allowed by the home-screen selector.
@@ -115,6 +117,9 @@ const MAX_NUDGE = 0.04;              // tracks from nearby buckets may be sped u
 
 const bucketOf = t => t.bpm == null ? 'unsorted' : Math.floor(t.bpm / SIZE) * SIZE;
 const label = b => b === 'unsorted' ? 'Unsorted' : `${b}–${b + SIZE - 1}`;
+// Plain-language pace for each tens of spm (150s, 160s, ...).
+const CATEGORY = { 150: 'Fast walk', 160: 'Slow run', 170: 'Fast', 180: 'Very fast' };
+const category = b => b === 'unsorted' ? '' : CATEGORY[Math.floor(b / 10) * 10] || '';
 
 // An entry is a track plus the speed to play it at. Native tracks play at 1.0;
 // a track just outside the bucket is nudged to the nearest tempo inside it.
@@ -164,7 +169,7 @@ function renderHome() {
     const li = document.createElement('li');
     li.className = 'bucket' + (b === playingBucket ? ' live' : '');
     const parts = [n && `${n} track${n > 1 ? 's' : ''}`, adj && `${adj} adjusted`].filter(Boolean);
-    li.innerHTML = `<span>${label(b)}</span><span class="count">${parts.join(' + ')}</span>`;
+    li.innerHTML = `<span>${label(b)}<span class="cat">${category(b)}</span></span><span class="count">${parts.join(' + ')}</span>`;
     li.onclick = () => { location.hash = `#/${b}`; };
     ul.appendChild(li);
   }
@@ -180,8 +185,9 @@ function renderBucket() {
   $('bTitle').textContent = `${label(viewBucket)} spm`;
   const adj = list.filter(e => e.rate !== 1).length;
   const n = list.length - adj;
-  $('bSub').textContent = [n && `${n} track${n > 1 ? 's' : ''}`, adj && `${adj} sped up or slowed down (max 4%)`]
+  const counts = [n && `${n} track${n > 1 ? 's' : ''}`, adj && `${adj} sped up or slowed down (max 4%)`]
     .filter(Boolean).join(' + ');
+  $('bSub').textContent = [category(viewBucket), counts].filter(Boolean).join(' · ');
   const ul = $('tracks');
   ul.innerHTML = '';
   const cur = pos >= 0 ? queue[pos].key : null;
@@ -196,6 +202,7 @@ function renderBucket() {
     ul.appendChild(li);
   }
   $('shuffle').classList.toggle('on', shuffle);
+  $('shuffle').textContent = shuffle ? 'Shuffle: On' : 'Shuffle: Off';
   updateControls();
   updateMini();
 }
@@ -241,10 +248,12 @@ function playAt(i) {
   viewBucket !== null ? renderBucket() : renderHome();
 }
 
-audio.onended = () => {
+function next() {
+  if (pos < 0) return;
   if (pos + 1 < queue.length) return playAt(pos + 1);
   startBucket(playingBucket);                   // wrap around (reshuffles)
-};
+}
+audio.onended = next;
 
 function updateControls() {
   const here = playingBucket === viewBucket && pos >= 0;
@@ -270,10 +279,10 @@ for (const btn of $('modes').children) {
   btn.onclick = () => { mode = btn.dataset.mode; store.set('mode', mode); renderHome(); };
 }
 $('miniPlay').onclick = () => { audio.paused ? audio.play() : audio.pause(); };
+$('miniNext').onclick = next;
 $('miniNow').onclick = () => { if (playingBucket !== null) location.hash = `#/${playingBucket}`; };
 $('shuffle').onclick = () => {
   shuffle = !shuffle;
-  store.set('shuffle', shuffle);
   if (playingBucket === viewBucket && pos >= 0) {   // reorder what's left, keep current song
     const cur = queue[pos], rest = inBucket(viewBucket).filter(e => e.key !== cur.key);
     queue = [cur, ...(shuffle ? shuffled(rest) : rest)];
@@ -292,6 +301,7 @@ try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } ca
 if ('mediaSession' in navigator) {
   navigator.mediaSession.setActionHandler('play', () => audio.play());
   navigator.mediaSession.setActionHandler('pause', () => audio.pause());
+  navigator.mediaSession.setActionHandler('nexttrack', next);
 }
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
