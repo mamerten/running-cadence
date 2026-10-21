@@ -1333,5 +1333,53 @@
   "file": "dvids-791772.mp4",
   "source": "dvids:791772",
   "reject": "duplicate upload of dvids:791766"
+ },
+ {
+  "file": "lib-navy---cpo-selectee-pt-run.mp3",
+  "source": "local:Called Cadences/Navy - CPO Selectee PT Run.mp3",
+  "title": "CPO Selectee PT Run",
+  "credit": "U.S. Navy (Fleet Master Chief, CNE-CNA)",
+  "kind": "running",
+  "license": "Public domain (US Gov work)",
+  "source_url": "https://www.youtube.com/watch?v=TxlgCcwdbm0",
+  "clips": [
+   [
+    0,
+    100000
+   ]
+  ],
+  "note": "from Mat's Dropbox batch; official channel, measured running pace"
+ },
+ {
+  "file": "lib-army---18th-military-police-brigade-run.mp3",
+  "source": "local:Called Cadences/Army - 18th Military Police Brigade Run.mp3",
+  "title": "18th Military Police Brigade Run",
+  "credit": "U.S. Army, 18th Military Police Brigade",
+  "kind": "running",
+  "license": "Public domain (US Gov work)",
+  "source_url": "https://www.youtube.com/watch?v=uCLtEqJp8pI",
+  "clips": [
+   [
+    0,
+    100000
+   ]
+  ],
+  "note": "from Mat's Dropbox batch; official channel, measured running pace"
+ },
+ {
+  "file": "lib-marines---244th-marine-corps-birthday-cadence.mp3",
+  "source": "local:Called Cadences/Marines - 244th Marine Corps Birthday Cadence.mp3",
+  "title": "244th Marine Corps Birthday Cadence",
+  "credit": "U.S. Marine Corps Recruiting",
+  "kind": "running",
+  "license": "Public domain (US Gov work)",
+  "source_url": "https://www.youtube.com/watch?v=ycMTOl4dOiA",
+  "clips": [
+   [
+    0,
+    100000
+   ]
+  ],
+  "note": "from Mat's Dropbox batch; official channel, measured running pace"
  }
 ]

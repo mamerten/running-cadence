@@ -6,6 +6,9 @@ tools/import_cadence.py reads. Files already in staging/ are not re-downloaded.
 Sources:
   dvids:<id>          a DVIDS video (US Gov work, public domain)
   commons:<File name> a Wikimedia Commons file (license read from Commons)
+  local:<path>        a file already prepared in Mat's cadence library
+                      (CADENCE_LIBRARY, default ~/Dropbox/Music/Military Cadences);
+                      title/credit/license/source_url come from the entry itself
 
 Rejected sources are skipped. Name sources to fetch only those (any part of
 the file name or source, e.g. dvids:827771), including a rejected one you
@@ -28,7 +31,9 @@ SOURCES = ROOT / "tools" / "cadence-sources.json"
 STAGING = pathlib.Path(os.environ.get("CADENCE_STAGING") or ROOT / "staging" / "cadence")
 UA = {"User-Agent": "running-cadence/1.0 (https://github.com/mamerten/running-cadence)"}
 MAX_BYTES = 400 << 20     # skip giant full-resolution masters
-BROWSER_UA ={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
+LIBRARY = pathlib.Path(os.environ.get("CADENCE_LIBRARY")
+                       or pathlib.Path.home() / "Dropbox" / "Music" / "Military Cadences")
+BROWSER_UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
 
 
 def get(url, headers=UA):
@@ -78,6 +83,14 @@ def main():
         if s.get("reject") and not wanted:
             continue
         kind, ref = s["source"].split(":", 1)
+        if kind == "local":                          # already-edited file: copy it in
+            dest = STAGING / s["file"]
+            if not dest.exists():
+                dest.write_bytes((LIBRARY / ref).read_bytes())
+            manifest.append({"file": s["file"], "kind": s.get("kind", "unknown"),
+                             **{k: s[k] for k in ("title", "credit", "license", "source_url")}})
+            print(f"{s['file'][:60]:60} {dest.stat().st_size // 1024:7d} KB  {s['title']}", flush=True)
+            continue
         try:
             m = dvids(ref) if kind == "dvids" else commons(ref)
         except Exception as e:                       # page moved, removed, or blocked

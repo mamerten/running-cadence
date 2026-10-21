@@ -725,5 +725,44 @@
   "start": 410,
   "seconds": 70,
   "bpm": 161
+ },
+ {
+  "file": "lib-navy---cpo-selectee-pt-run-1.mp3",
+  "from": "lib-navy---cpo-selectee-pt-run.mp3",
+  "title": "CPO Selectee PT Run",
+  "artist": "U.S. Navy (Fleet Master Chief, CNE-CNA)",
+  "license": "Public domain (US Gov work)",
+  "license_url": "https://www.usa.gov/government-copyright",
+  "source_url": "https://www.youtube.com/watch?v=TxlgCcwdbm0",
+  "kind": "running",
+  "start": 0,
+  "seconds": 73,
+  "bpm": 161
+ },
+ {
+  "file": "lib-army---18th-military-police-brigade-run-1.mp3",
+  "from": "lib-army---18th-military-police-brigade-run.mp3",
+  "title": "18th Military Police Brigade Run",
+  "artist": "U.S. Army, 18th Military Police Brigade",
+  "license": "Public domain (US Gov work)",
+  "license_url": "https://www.usa.gov/government-copyright",
+  "source_url": "https://www.youtube.com/watch?v=uCLtEqJp8pI",
+  "kind": "running",
+  "start": 0,
+  "seconds": 181,
+  "bpm": 169
+ },
+ {
+  "file": "lib-marines---244th-marine-corps-birthday-cadence-1.mp3",
+  "from": "lib-marines---244th-marine-corps-birthday-cadence.mp3",
+  "title": "244th Marine Corps Birthday Cadence",
+  "artist": "U.S. Marine Corps Recruiting",
+  "license": "Public domain (US Gov work)",
+  "license_url": "https://www.usa.gov/government-copyright",
+  "source_url": "https://www.youtube.com/watch?v=ycMTOl4dOiA",
+  "kind": "running",
+  "start": 0,
+  "seconds": 248,
+  "bpm": 171
  }
 ]
