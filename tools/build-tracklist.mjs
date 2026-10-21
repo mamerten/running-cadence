@@ -23,6 +23,30 @@ function files(dir) {
   return readdirSync(join(pub, dir)).filter(f => AUDIO.test(f));
 }
 const src = (dir, f) => `${dir}/${encodeURIComponent(f)}`;
+
+// Length in seconds of an MP3, from its frame headers (no dependencies, so it
+// also runs in Cloudflare's build). Non-MP3 files get null.
+const KBPS = { 1: [0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320],
+               2: [0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160] };
+const RATES = { 3: [44100, 48000, 32000], 2: [22050, 24000, 16000], 0: [11025, 12000, 8000] };
+function mp3Seconds(path) {
+  if (!/\.mp3$/i.test(path)) return null;
+  const b = readFileSync(path);
+  let i = 0, samples = 0, rate = 0;
+  if (b.toString('latin1', 0, 3) === 'ID3')            // skip ID3v2 tag
+    i = 10 + ((b[6] << 21) | (b[7] << 14) | (b[8] << 7) | b[9]);
+  while (i + 4 <= b.length) {
+    const ver = (b[i + 1] >> 3) & 3, br = b[i + 2] >> 4, sr = (b[i + 2] >> 2) & 3;
+    if (b[i] !== 0xff || (b[i + 1] & 0xe0) !== 0xe0 || ((b[i + 1] >> 1) & 3) !== 1
+        || ver === 1 || br === 0 || br === 15 || sr === 3) { i++; continue; }  // not a Layer III frame
+    rate = RATES[ver][sr];
+    const perFrame = ver === 3 ? 1152 : 576;
+    const kbps = KBPS[ver === 3 ? 1 : 2][br];
+    i += Math.floor(perFrame / 8 * kbps * 1000 / rate) + ((b[i + 2] >> 1) & 1);
+    samples += perFrame;
+  }
+  return rate ? Math.round(samples / rate) : null;
+}
 const cap = s => s[0].toUpperCase() + s.slice(1);
 
 const tracks = [];
@@ -30,7 +54,8 @@ const tracks = [];
 for (const f of files('generated')) {
   const m = parse(f).name.match(/^cadence-(\d+)-(\w+)$/);
   if (!m) continue;
-  tracks.push({ title: `${cap(m[2])} beat`, artist: 'Generated', bpm: +m[1], src: src('generated', f), kind: 'music' });
+  tracks.push({ title: `${cap(m[2])} beat`, artist: 'Generated', bpm: +m[1], src: src('generated', f), kind: 'music',
+                seconds: mp3Seconds(join(pub, 'generated', f)) });
 }
 
 // Licensed tracks with a metadata file: free music, and military cadence calls.
@@ -45,6 +70,7 @@ for (const [dir, metaFor] of [['free', freeMeta], ['cadence', cadenceMeta]]) {
       artist: dir === 'cadence' ? 'Military cadence' : meta.artist,
       kind: dir === 'cadence' ? 'military' : 'music',
       license: meta.license, license_url: meta.license_url, source_url: meta.source_url,
+      seconds: mp3Seconds(join(pub, dir, f)),
     });
   }
 }
@@ -55,6 +81,7 @@ for (const f of files('music')) {
   tracks.push({
     title: m ? m[2] : name, artist: 'My music', kind: 'music',
     bpm: m ? +m[1] : (bpmCache[`music/${f}`] ?? null), src: src('music', f),
+    seconds: mp3Seconds(join(pub, 'music', f)),
   });
 }
 

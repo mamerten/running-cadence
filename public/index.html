@@ -146,8 +146,11 @@ function entry(t, bpm) {
     t, bpm, rate, key: `${t.src}@${bpm}`,
     title: t.title + (rate > 1 ? ' (faster)' : rate < 1 ? ' (slower)' : ''),
     note: rate === 1 ? '' : ` · ${pct > 0 ? '+' : ''}${pct}% from ${t.bpm}`,
+    length: t.seconds ? mmss(t.seconds / rate) : '',   // how long it plays at this speed
   };
 }
+
+const mmss = s => (s = Math.round(s), `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`);
 
 function shuffled(list) {
   const a = list.slice();
@@ -210,7 +213,7 @@ function renderBucket() {
     li.innerHTML = `<span class="bpm"></span><div class="t"></div><div class="a"></div>`;
     li.querySelector('.bpm').textContent = e.bpm ?? '';
     li.querySelector('.t').textContent = e.title;
-    li.querySelector('.a').textContent = e.t.artist + e.note;
+    li.querySelector('.a').textContent = e.t.artist + (e.length && ` · ${e.length}`) + e.note;
     li.onclick = () => startBucket(viewBucket, e.key);
     ul.appendChild(li);
   }
