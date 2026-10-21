@@ -151,12 +151,27 @@ def steady_segments(x):
 
 
 def clip_tempo(x):
-    """Median cadence (spm) over a hand-picked clip, or None if no beat reads."""
+    """Steps per minute over a hand-picked clip, or None if no beat reads.
+
+    Mostly at running pace: the median running reading (150-189). Otherwise
+    (marching, drum cadences) the real step rate, folded into 100-199, so a
+    ~115 march is labeled 115 rather than mistaken for a run.
+    """
     a, sr = x[::2], detect_bpm.SR
-    reads = [detect_bpm.to_cadence(detect_bpm.tempo(a[s:s + WIN * sr])[0])
-             for s in range(0, max(1, len(a) - WIN * sr + 1), HOP * sr)]
-    reads = [r for r in reads if r is not None]
-    return int(round(np.median(reads))) if reads else None
+    raw = [detect_bpm.tempo(a[s:s + WIN * sr])[0]
+           for s in range(0, max(1, len(a) - WIN * sr + 1), HOP * sr)]
+    raw = [r for r in raw if r]
+    run = [c for c in map(detect_bpm.to_cadence, raw) if c is not None]
+    if run and len(run) >= len(raw) / 2:
+        return int(round(np.median(run)))
+    folded = []
+    for r in raw:
+        while r < 100:
+            r *= 2
+        while r >= 200:
+            r /= 2
+        folded.append(r)
+    return int(round(np.median(folded))) if folded else None
 
 
 def main():

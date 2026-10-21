@@ -15,23 +15,23 @@ The app only uses the audio. `tools/fetch_cadence.py` downloads each video
 listed in `tools/cadence-sources.json`. `tools/import_cadence.py` cuts the
 listed stretch out as an MP3 into `public/cadence/`.
 
-The repo's own tools don't download from YouTube. Mat's Dropbox batch (see
-"Dropbox batch" below) did, separately. What decides whether a recording may
-go on the public site and in this public repo is its license, not where the
-file came from: US Government work / public domain / CC BY is fine;
-recordings by individual uploaders, and commercial albums or rips of them,
-are not. "Topic" channels (e.g. "U.S. Drill Sergeant Field Recordings –
-Topic") are commercial albums. Anything not freely licensed would need
-private hosting, outside this public repo.
+- **Mat's cadence library** (Dropbox, `local:` sources): recordings Mat
+  collected and edited himself (see "Dropbox batch" below). **Mat holds the
+  rights to his library; everything in it goes in the app.** Don't second-guess
+  that from folder names or catalog `license` text.
 
-## What's in the app (Oct 2026)
+## What's in the app (Oct 20, 2026)
 
-16 clips, 28 min (3 added from the Dropbox batch, see below), each a complete sung call-and-response running cadence,
-150–171 spm (mostly 160s). The Army 10-Mile Run clip (6:50–8:00) was put
-back after Mat listened; its transcript had been unreadable. That is everything usable that was found in about
-250 DVIDS/Commons videos. DVIDS searches for cadence, jody, moto/motivational
-run, formation/unit/battalion/brigade/division/regimental run, cadence
-contest/competition are exhausted. Freesound has nothing useful.
+111 clips, 350 min:
+- 13 from DVIDS/Commons: complete sung running cadences, 153–171 spm. That is
+  everything usable in about 250 DVIDS/Commons videos; DVIDS searches for
+  cadence, jody, moto/motivational run, formation/unit/battalion/brigade/
+  division/regimental run, cadence contest/competition are exhausted.
+  Freesound has nothing useful. The Army 10-Mile Run clip (6:50–8:00) was put
+  back after Mat listened; its transcript had been unreadable.
+- 98 from Mat's library: every file except exact duplicates, whole files as
+  he edited them. Running pace 150–194; marching and drum cadences (105–149)
+  sit under the "Marching" heading on the home page.
 
 ## What went wrong, so it isn't repeated
 
@@ -45,7 +45,9 @@ contest/competition are exhausted. Freesound has nothing useful.
    sergeant contest songs (Victory, Your Son Is Gone, Old Man James, In the
    Coast Guard…) are called at ~110–120 steps/min. `detect_bpm.to_cadence`
    only doubles or halves a tempo, so 115 never fits 150–189, and stray
-   readings got them mislabeled as 152–155 spm. They're excluded.
+   readings got them mislabeled as 152–155 spm. `clip_tempo` now labels a
+   mostly-not-running clip with its real step rate, so marching tracks land
+   under "Marching" instead of posing as runs.
 3. **Fragments.** The detector loses the beat during call-and-response pauses
    and cuts songs into slices. Mat wants complete songs, not 24 s pieces.
 4. **Transcripts aren't ears.** Speech recognition handles one caller well
@@ -56,6 +58,9 @@ contest/competition are exhausted. Freesound has nothing useful.
    Dropbox (`CADENCE_STAGING`) and delete them when done.
 
 ## How to add a new source properly
+
+For a file from Mat's library: add a `local:` entry with `"clips": [[0, 100000]]`
+(the whole file), then step 5 below. The review steps are for raw video.
 
 1. Add it to `tools/cadence-sources.json` and run
    `fetch_cadence.py <source>` (with no argument it fetches every source that
@@ -165,22 +170,12 @@ Rock Steady – Ft McClellan 1987, Saw an Old Lady, Marine Moto Run, both Best
 Cadence Caller files. The other 50 unofficial files measure clearly running
 (152–185 spm).
 
-**Licensing found during ingestion:** the "US Air Force – Topic" and "The U.S.
-Army Infantry – Topic" tracks (I Want to Be an Air Force Pilot, Rescue Ranger,
-I Can Run to California, 141 Cruising Down the Strip, People Want to Know,
-Jody) are from the commercial "Run to Cadence With the United States Air
-Force" (℗ 2011) and "…With The U.S. Army Infantry" (℗ 1999) albums,
-distributed by SongCast. The catalog lists them as US Gov work; they aren't.
-Same series as the excluded "Run to Cadence with the US Marines".
+**Added to the app:** all 98 non-duplicate files (Called, Drum and Running
+Cadences), whole, as source type `local:` in `cadence-sources.json`
+(`fetch_cadence.py local:` copies them from the library; the importer
+re-encodes to the app's 96 kbps mono). The 11 exact duplicates above were
+skipped, keeping one copy of each. Mat holds the rights to the library.
 
-**Added to the app** (US Gov work, official channels, not duplicates, running
-pace): Navy – CPO Selectee PT Run (161), Army – 18th Military Police Brigade
-Run (169), Marines – 244th Marine Corps Birthday Cadence (171). Source type
-`local:` in `cadence-sources.json`; `fetch_cadence.py local:` copies them
-from the library. App total: 16 clips, 28 min.
-
-**Not added to the public site:** the 58 unofficial files (uploader-owned; 8
-look like commercial rips), the 6 commercial "Run to Cadence" tracks, the
-archive.org "Uploader-posted, license not stated" files, drum cadences, and
-marching tempo. Using the unofficial set needs private hosting (outside this
-public repo); that's Mat's decision.
+**Mistake made here, don't repeat:** the first pass added only 3 files after
+reading the catalog's `license` column and the "(Unofficial)" folder name as
+licensing limits. Mat has the rights; the library goes in whole.

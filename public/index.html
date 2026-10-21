@@ -121,7 +121,8 @@ const bucketOf = t => t.bpm == null ? 'unsorted' : Math.floor(t.bpm / SIZE) * SI
 const label = b => b === 'unsorted' ? 'Unsorted' : `${b}–${b + SIZE - 1}`;
 // Plain-language pace for each tens of spm (150s, 160s, ...).
 const CATEGORY = { 150: 'Fast walk', 160: 'Slow run', 170: 'Fast', 180: 'Very fast' };
-const category = b => b === 'unsorted' ? '' : CATEGORY[Math.floor(b / 10) * 10] || '';
+const category = b => b === 'unsorted' ? '' : b < 150 ? 'Marching' : b >= 190 ? 'Very fast'
+  : CATEGORY[Math.floor(b / 10) * 10];
 
 // An entry is a track plus the speed to play it at. Native tracks play at 1.0;
 // a track just outside the bucket is nudged to the nearest tempo inside it.
