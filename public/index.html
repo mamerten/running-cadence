@@ -28,6 +28,9 @@
   h2.group { font-size:15px; font-weight:600; color:var(--accent); text-transform:uppercase;
              letter-spacing:.06em; margin:22px 0 0; }
   h2.group + ul { margin-top:8px; }
+  h2.group button { background:none; color:inherit; font:inherit; letter-spacing:inherit; min-height:44px;
+                    text-transform:inherit; padding:4px 0; width:100%; text-align:left; }
+  h2.group .arrow { display:inline-block; width:1.2em; }
   li.bucket.live { outline:2px solid var(--accent); }
   li.track .t { font-weight:500; }
   li.track .a { color:var(--dim); font-size:13px; margin-top:2px; }
@@ -42,11 +45,12 @@
   progress { width:100%; height:4px; accent-color:var(--accent); }
   /* Now-playing bar: pinned to the bottom of every screen once something has played */
   body.has-mini { padding-bottom:calc(env(safe-area-inset-bottom) + 88px); }
-  .mini { position:fixed; left:0; right:0; bottom:0; z-index:10; display:flex; align-items:center; gap:12px;
+  .mini { position:fixed; left:0; right:0; bottom:0; z-index:10; display:flex; align-items:center; gap:8px;
           background:#000; border-top:1px solid #333;
           padding:10px 16px calc(env(safe-area-inset-bottom) + 10px); }
   .mini button { background:var(--accent); color:#111; font-weight:700; font-size:16px; padding:12px 0; width:76px; flex:none; }
-  .mini #miniNext { background:var(--row); color:var(--fg); width:64px; }
+  .mini #miniFwd, .mini #miniNext { background:var(--row); color:var(--fg); width:58px; }
+  .mini #miniPlay { width:70px; }
   .mini span { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   footer { color:var(--dim); font-size:13px; margin-top:28px; line-height:1.5; }
   details summary { cursor:pointer; }
@@ -90,7 +94,7 @@
 
 <!-- Now playing: on every screen. Tap the text to jump to that cadence. -->
 <div id="mini" class="mini hidden">
-  <button id="miniPlay">Pause</button><button id="miniNext">Next</button><span id="miniNow" class="sub"></span>
+  <button id="miniPlay">Pause</button><button id="miniFwd" aria-label="Forward 15 seconds">+15</button><button id="miniNext">Next</button><span id="miniNow" class="sub"></span>
 </div>
 
 <audio id="audio" preload="none" playsinline></audio>
@@ -121,7 +125,9 @@ const bucketOf = t => t.bpm == null ? 'unsorted' : Math.floor(t.bpm / SIZE) * SI
 const label = b => b === 'unsorted' ? 'Unsorted' : `${b}–${b + SIZE - 1}`;
 // Plain-language pace for each tens of spm (150s, 160s, ...).
 const CATEGORY = { 150: 'Fast walk', 160: 'Slow run', 170: 'Fast', 180: 'Very fast' };
-const category = b => b === 'unsorted' ? '' : b < 150 ? 'Marching' : b >= 190 ? 'Very fast'
+// Pace groups folded on the home screen; tap a heading to open/close it.
+const collapsed = new Set(['Marching', 'Fast walk']);
+const category = b =>b === 'unsorted' ? '' : b < 150 ? 'Marching' : b >= 190 ? 'Very fast'
   : CATEGORY[Math.floor(b / 10) * 10];
 
 // An entry is a track plus the speed to play it at. Native tracks play at 1.0;
@@ -174,11 +180,14 @@ function renderHome() {
     const list = inBucket(b);
     if (!list.length) continue;                 // nothing of this kind at this pace
     if (!ul || category(b) !== group) {
-      group = category(b);
-      const h = document.createElement('h2');
+      group = category(b) || 'Other';
+      const h = document.createElement('h2'), name = group, shut = collapsed.has(name);
       h.className = 'group';
-      h.textContent = group || 'Other';
+      h.innerHTML = `<button><span class="arrow">${shut ? '▸' : '▾'}</span></button>`;
+      h.firstChild.append(name);
+      h.firstChild.onclick = () => { collapsed.has(name) ? collapsed.delete(name) : collapsed.add(name); renderHome(); };
       ul = document.createElement('ul');
+      ul.classList.toggle('hidden', shut);
       box.append(h, ul);
     }
     const n = list.filter(e => e.rate === 1).length, adj = list.length - n;
@@ -297,6 +306,9 @@ for (const btn of $('modes').children) {
   btn.onclick = () => { mode = btn.dataset.mode; store.set('mode', mode); renderHome(); };
 }
 $('miniPlay').onclick = () => { audio.paused ? audio.play() : audio.pause(); };
+// Skip ahead 15 s; past the end the track ends and the next one starts.
+const forward15 = () => { if (pos >= 0) audio.currentTime = Math.min(audio.currentTime + 15, audio.duration || Infinity); };
+$('miniFwd').onclick = forward15;
 $('miniNext').onclick = next;
 $('miniNow').onclick = () => { if (playingBucket !== null) location.hash = `#/${playingBucket}`; };
 $('shuffle').onclick = () => {
@@ -320,6 +332,7 @@ if ('mediaSession' in navigator) {
   navigator.mediaSession.setActionHandler('play', () => audio.play());
   navigator.mediaSession.setActionHandler('pause', () => audio.pause());
   navigator.mediaSession.setActionHandler('nexttrack', next);
+  try { navigator.mediaSession.setActionHandler('seekforward', forward15); } catch {}  // not every browser has it
 }
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));

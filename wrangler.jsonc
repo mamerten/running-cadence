@@ -1,5 +1,5 @@
 // Static site served by Cloudflare Workers. Everything in public/ is uploaded.
-// Audio requests go through src/worker.js first so iPhone gets Range support.
+// All audio goes through src/worker.js first: Range support for iPhone and seeking (+15 s).
 {
   "name": "running-cadence",
   "main": "src/worker.js",
@@ -9,6 +9,6 @@
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",
-    "run_worker_first": ["/generated/*", "/music/*"]
+    "run_worker_first": ["/generated/*", "/music/*", "/free/*", "/cadence/*"]
   }
 }

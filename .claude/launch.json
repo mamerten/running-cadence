@@ -6,6 +6,12 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8767", "--directory", "public"],
       "port": 8767
+    },
+    {
+      "name": "cadence-worker",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["wrangler", "dev", "--port", "8790"],
+      "port": 8790
     }
   ]
 }
