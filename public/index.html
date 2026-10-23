@@ -32,10 +32,19 @@
                     text-transform:inherit; padding:4px 0; width:100%; text-align:left; }
   h2.group .arrow { display:inline-block; width:1.2em; }
   li.bucket.live { outline:2px solid var(--accent); }
+  li.track { display:flex; gap:8px; align-items:center; padding:10px 6px 10px 14px; }
+  li.track .info { flex:1; min-width:0; }
   li.track .t { font-weight:500; }
   li.track .a { color:var(--dim); font-size:13px; margin-top:2px; }
   li.track.playing { outline:2px solid var(--accent); }
-  .bpm { color:var(--accent); float:right; font-variant-numeric:tabular-nums; }
+  li.track.never { opacity:.45; }
+  li.track .side { display:flex; flex-direction:column; align-items:flex-end; flex:none; }
+  .bpm { color:var(--accent); font-variant-numeric:tabular-nums; padding-right:8px; }
+  .marks { display:flex; }
+  .marks button { background:none; color:var(--dim); font-size:20px; line-height:1; padding:8px; min-width:40px; }
+  .marks .fav.on { color:var(--accent); }
+  .marks .never.on { color:#e5534b; }
+  #neverLink { display:block; margin-bottom:8px; }
   .back { background:none; padding:16px 0 0; color:var(--accent); font-size:17px; }
   .controls { display:flex; gap:10px; margin-top:16px; }
   #play { background:var(--accent); color:#111; font-weight:700; flex:2; font-size:22px; padding:18px; }
@@ -71,8 +80,13 @@
     <button data-mode="both">Both</button>
     <button data-mode="music">Techno</button>
   </div>
+  <div class="modes" id="favModes">
+    <button data-fav="first">♥ Favorites first</button>
+    <button data-fav="only">♥ Favorites only</button>
+  </div>
   <div id="buckets"></div>
   <footer>
+    <a href="#/never" id="neverLink" class="hidden"></a>
     <a href="https://github.com/mamerten/running-cadence">GitHub: running-cadence</a>
     <details><summary>Music credits</summary><div id="credits"></div></details>
   </footer>
@@ -90,6 +104,14 @@
   <div id="now" class="sub"></div>
   <progress id="prog" value="0" max="1"></progress>
   <ul id="tracks"></ul>
+</section>
+
+<!-- Never-play list: every track anyone marked ⊘, to review and later delete -->
+<section id="never" class="hidden">
+  <button class="back" onclick="location.hash=''">‹ All cadences</button>
+  <h1>Never play</h1>
+  <div class="sub">Skipped everywhere. Tap ⊘ to bring one back; ask to have the rest deleted for good.</div>
+  <ul id="neverTracks"></ul>
 </section>
 
 <!-- Now playing: on every screen. Tap the text to jump to that cadence. -->
@@ -115,6 +137,36 @@ const store = {
 };
 let shuffle = true;                             // on at every visit; the button only changes it for now
 let mode = store.get('mode', 'both');          // 'military' | 'both' | 'music'
+let favMode = store.get('favMode', 'first');   // 'first': favorites play first | 'only': just favorites
+
+// Favorites / never-play, shared by everyone, kept on the server: { "<src>": "fav" | "never" }
+let marks = {};
+const isFav = t => marks[t.src] === 'fav';
+const isNever = t => marks[t.src] === 'never';
+async function setMark(t, mark) {
+  marks = { ...marks };
+  mark ? (marks[t.src] = mark) : delete marks[t.src];             // show it right away
+  rerender();
+  if (mark === 'never' && pos >= 0 && queue[pos].t === t) next(); // don't keep playing it
+  try {
+    const r = await fetch('api/marks', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                         body: JSON.stringify({ src: t.src, mark }) });
+    if (r.ok) { marks = await r.json(); rerender(); }
+  } catch {}
+}
+
+// Display order: favorites, then the rest, then never-play; each A–Z.
+const byTitle = (a, b) => a.t.title.localeCompare(b.t.title, undefined, { numeric: true, sensitivity: 'base' });
+const rank = e => isFav(e.t) ? 0 : isNever(e.t) ? 2 : 1;
+const ordered = list => list.slice().sort((a, b) => rank(a) - rank(b) || byTitle(a, b));
+const playable = list => list.filter(e => !isNever(e.t));
+
+// What plays, in order: favorites first (each part shuffled if Shuffle is on).
+function playOrder(list) {
+  const mix = l => shuffle ? shuffled(l) : l;
+  const ok = ordered(playable(list));
+  return [...mix(ok.filter(e => isFav(e.t))), ...mix(ok.filter(e => !isFav(e.t)))];
+}
 
 // Tracks allowed by the home-screen selector.
 const pool = () => tracks.filter(t => mode === 'both' || (t.kind === 'military') === (mode === 'military'));
@@ -132,17 +184,19 @@ const category = b =>b === 'unsorted' ? '' : b < 150 ? 'Marching' : b >= 190 ? '
 
 // An entry is a track plus the speed to play it at. Native tracks play at 1.0;
 // a track just outside the bucket is nudged to the nearest tempo inside it.
+// "Favorites only" narrows every bucket to favorites. Returned in display order.
 function inBucket(b) {
-  if (b === 'unsorted') return pool().filter(t => t.bpm == null).map(t => entry(t, t.bpm));
-  const native = [], nudged = [];
+  const list = [];
   for (const t of pool()) {
+    if (favMode === 'only' && !isFav(t)) continue;
+    if (b === 'unsorted') { if (t.bpm == null) list.push(entry(t, t.bpm)); continue; }
     if (t.bpm == null) continue;
-    if (bucketOf(t) === b) { native.push(entry(t, t.bpm)); continue; }
+    if (bucketOf(t) === b) { list.push(entry(t, t.bpm)); continue; }
     if (t.artist === 'Generated') continue;     // every bucket already has its own beats
     const target = Math.min(Math.max(t.bpm, b), b + SIZE - 1);
-    if (Math.abs(target / t.bpm - 1) <= MAX_NUDGE) nudged.push(entry(t, target));
+    if (Math.abs(target / t.bpm - 1) <= MAX_NUDGE) list.push(entry(t, target));
   }
-  return [...native, ...nudged];
+  return ordered(list);
 }
 
 function entry(t, bpm) {
@@ -171,13 +225,19 @@ function shuffled(list) {
 
 function renderHome() {
   for (const btn of $('modes').children) btn.classList.toggle('on', btn.dataset.mode === mode);
+  for (const btn of $('favModes').children) btn.classList.toggle('on', btn.dataset.fav === favMode);
+  const nNever = tracks.filter(isNever).length;
+  $('neverLink').textContent = `⊘ Never-play list (${nNever})`;
+  $('neverLink').classList.toggle('hidden', !nNever);
   const buckets = [...new Set(tracks.map(bucketOf))].sort((a, b) => (a === 'unsorted') - (b === 'unsorted') || a - b);
   // One heading per pace group (Fast walk, Slow run, ...) with its ranges underneath.
   const box = $('buckets');
   box.innerHTML = '';
+  if (favMode === 'only' && !pool().some(isFav))
+    box.innerHTML = '<p class="sub">No favorites here yet. Switch to “Favorites first”, open a range and tap ♡ on a track.</p>';
   let ul = null, group = null;
   for (const b of buckets) {
-    const list = inBucket(b);
+    const list = playable(inBucket(b));
     if (!list.length) continue;                 // nothing of this kind at this pace
     if (!ul || category(b) !== group) {
       group = category(b) || 'Other';
@@ -205,51 +265,74 @@ function renderHome() {
   updateMini();
 }
 
+// One track row: title + details, tempo, ♡ favorite and ⊘ never-play toggles.
+function trackRow(e, onTap) {
+  const li = document.createElement('li');
+  li.className = 'track' + (pos >= 0 && e.key === queue[pos].key ? ' playing' : '') + (isNever(e.t) ? ' never' : '');
+  li.innerHTML = `<div class="info"><div class="t"></div><div class="a"></div></div>
+    <div class="side"><span class="bpm"></span><span class="marks">
+      <button class="fav" aria-label="Favorite"></button><button class="never" aria-label="Never play">⊘</button></span></div>`;
+  li.querySelector('.bpm').textContent = e.bpm ?? '';
+  li.querySelector('.t').textContent = e.title;
+  li.querySelector('.a').textContent = e.t.artist + (e.length && ` · ${e.length}`) + e.note;
+  const fav = li.querySelector('.fav'), never = li.querySelector('.never');
+  fav.textContent = isFav(e.t) ? '♥' : '♡';
+  fav.classList.toggle('on', isFav(e.t));
+  never.classList.toggle('on', isNever(e.t));
+  fav.onclick = ev => { ev.stopPropagation(); setMark(e.t, isFav(e.t) ? null : 'fav'); };
+  never.onclick = ev => { ev.stopPropagation(); setMark(e.t, isNever(e.t) ? null : 'never'); };
+  if (onTap) li.onclick = onTap;
+  return li;
+}
+
 function renderBucket() {
-  const list = inBucket(viewBucket);
+  const list = inBucket(viewBucket), ok = playable(list);
   $('bTitle').textContent = `${label(viewBucket)} spm`;
-  const adj = list.filter(e => e.rate !== 1).length;
-  const n = list.length - adj;
+  const adj = ok.filter(e => e.rate !== 1).length;
+  const n = ok.length - adj, skip = list.length - ok.length;
   const counts = [n && `${n} track${n > 1 ? 's' : ''}`, adj && `${adj} sped up or slowed down (max 4%)`]
-    .filter(Boolean).join(' + ');
+    .filter(Boolean).join(' + ') + (skip ? ` · ${skip} never-play` : '');
   $('bSub').textContent = [category(viewBucket), counts].filter(Boolean).join(' · ');
   const ul = $('tracks');
   ul.innerHTML = '';
-  const cur = pos >= 0 ? queue[pos].key : null;
-  for (const e of list) {
-    const li = document.createElement('li');
-    li.className = 'track' + (e.key === cur ? ' playing' : '');
-    li.innerHTML = `<span class="bpm"></span><div class="t"></div><div class="a"></div>`;
-    li.querySelector('.bpm').textContent = e.bpm ?? '';
-    li.querySelector('.t').textContent = e.title;
-    li.querySelector('.a').textContent = e.t.artist + (e.length && ` · ${e.length}`) + e.note;
-    li.onclick = () => startBucket(viewBucket, e.key);
-    ul.appendChild(li);
-  }
+  for (const e of list) ul.appendChild(trackRow(e, () => startBucket(viewBucket, e.key)));
   $('shuffle').classList.toggle('on', shuffle);
   $('shuffle').textContent = shuffle ? 'Shuffle: On' : 'Shuffle: Off';
   updateControls();
   updateMini();
 }
 
+// Every never-play track (any mode), A–Z, to review before deleting for good.
+function renderNever() {
+  const ul = $('neverTracks');
+  ul.innerHTML = '';
+  for (const e of ordered(tracks.filter(isNever).map(t => entry(t, t.bpm)))) ul.appendChild(trackRow(e));
+  if (!ul.children.length) ul.innerHTML = '<p class="sub">Nothing marked never-play.</p>';
+  updateMini();
+}
+
+let neverView = false;
+const rerender = () => neverView ? renderNever() : viewBucket !== null ? renderBucket() : renderHome();
+
 function route() {
   const m = location.hash.match(/^#\/(\w+)$/);
-  viewBucket = m ? (m[1] === 'unsorted' ? 'unsorted' : +m[1]) : null;
-  $('home').classList.toggle('hidden', viewBucket !== null);
+  neverView = m?.[1] === 'never';
+  viewBucket = !m || neverView ? null : (m[1] === 'unsorted' ? 'unsorted' : +m[1]);
+  $('home').classList.toggle('hidden', !!m);
   $('bucket').classList.toggle('hidden', viewBucket === null);
-  viewBucket === null ? renderHome() : renderBucket();
+  $('never').classList.toggle('hidden', !neverView);
+  rerender();
   window.scrollTo(0, 0);
 }
 
 // ---------- playback ----------
 
+// A tapped track plays first (even a never-play one, to hear it before deleting).
 function startBucket(b, firstKey) {
   const list = inBucket(b);
-  queue = shuffle ? shuffled(list) : list;
-  if (firstKey) {
-    const first = queue.find(e => e.key === firstKey);
-    queue = [first, ...queue.filter(e => e !== first)];
-  }
+  queue = playOrder(list);
+  if (firstKey) queue = [list.find(e => e.key === firstKey), ...queue.filter(e => e.key !== firstKey)];
+  if (!queue.length) return;
   playingBucket = b;
   playAt(0);
 }
@@ -272,12 +355,14 @@ function playAt(i) {
       artwork: [{ src: 'icon.png', sizes: '512x512', type: 'image/png' }],
     });
   }
-  viewBucket !== null ? renderBucket() : renderHome();
+  rerender();
 }
 
 function next() {
   if (pos < 0) return;
-  if (pos + 1 < queue.length) return playAt(pos + 1);
+  let i = pos + 1;
+  while (i < queue.length && isNever(queue[i].t)) i++;   // marked never-play since the queue was built
+  if (i < queue.length) return playAt(i);
   startBucket(playingBucket);                   // wrap around (reshuffles)
 }
 audio.onended = next;
@@ -305,6 +390,9 @@ $('play').onclick = () => {
 for (const btn of $('modes').children) {
   btn.onclick = () => { mode = btn.dataset.mode; store.set('mode', mode); renderHome(); };
 }
+for (const btn of $('favModes').children) {
+  btn.onclick = () => { favMode = btn.dataset.fav; store.set('favMode', favMode); renderHome(); };
+}
 $('miniPlay').onclick = () => { audio.paused ? audio.play() : audio.pause(); };
 // Skip ahead 15 s; past the end the track ends and the next one starts.
 const forward15 = () => { if (pos >= 0) audio.currentTime = Math.min(audio.currentTime + 15, audio.duration || Infinity); };
@@ -314,8 +402,8 @@ $('miniNow').onclick = () => { if (playingBucket !== null) location.hash = `#/${
 $('shuffle').onclick = () => {
   shuffle = !shuffle;
   if (playingBucket === viewBucket && pos >= 0) {   // reorder what's left, keep current song
-    const cur = queue[pos], rest = inBucket(viewBucket).filter(e => e.key !== cur.key);
-    queue = [cur, ...(shuffle ? shuffled(rest) : rest)];
+    const cur = queue[pos];
+    queue = [cur, ...playOrder(inBucket(viewBucket)).filter(e => e.key !== cur.key)];
     pos = 0;
   }
   renderBucket();
@@ -337,8 +425,12 @@ if ('mediaSession' in navigator) {
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-fetch('tracks.json', { cache: 'no-store' }).then(r => r.json()).then(data => {
+Promise.all([
+  fetch('tracks.json', { cache: 'no-store' }).then(r => r.json()),
+  fetch('api/marks', { cache: 'no-store' }).then(r => r.ok ? r.json() : {}).catch(() => ({})),
+]).then(([data, m]) => {
   tracks = data;
+  marks = m;
   addEventListener('hashchange', route);
   route();
 });
