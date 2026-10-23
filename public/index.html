@@ -81,8 +81,9 @@
     <button data-mode="music">Techno</button>
   </div>
   <div class="modes" id="favModes">
-    <button data-fav="first">♥ Favorites first</button>
-    <button data-fav="only">♥ Favorites only</button>
+    <button data-fav="first">♥ First</button>
+    <button data-fav="only">♥ Only</button>
+    <button data-fav="ignore">Ignore ♥</button>
   </div>
   <div id="buckets"></div>
   <footer>
@@ -137,7 +138,8 @@ const store = {
 };
 let shuffle = true;                             // on at every visit; the button only changes it for now
 let mode = store.get('mode', 'both');          // 'military' | 'both' | 'music'
-let favMode = store.get('favMode', 'first');   // 'first': favorites play first | 'only': just favorites
+// 'first': favorites pinned and played first | 'only': just favorites | 'ignore': treated like any track
+let favMode = store.get('favMode', 'first');
 
 // Favorites / never-play, shared by everyone, kept on the server: { "<src>": "fav" | "never" }
 let marks = {};
@@ -157,7 +159,7 @@ async function setMark(t, mark) {
 
 // Display order: favorites, then the rest, then never-play; each A–Z.
 const byTitle = (a, b) => a.t.title.localeCompare(b.t.title, undefined, { numeric: true, sensitivity: 'base' });
-const rank = e => isFav(e.t) ? 0 : isNever(e.t) ? 2 : 1;
+const rank = e => isNever(e.t) ? 2 : isFav(e.t) && favMode !== 'ignore' ? 0 : 1;
 const ordered = list => list.slice().sort((a, b) => rank(a) - rank(b) || byTitle(a, b));
 const playable = list => list.filter(e => !isNever(e.t));
 
@@ -165,6 +167,7 @@ const playable = list => list.filter(e => !isNever(e.t));
 function playOrder(list) {
   const mix = l => shuffle ? shuffled(l) : l;
   const ok = ordered(playable(list));
+  if (favMode === 'ignore') return mix(ok);
   return [...mix(ok.filter(e => isFav(e.t))), ...mix(ok.filter(e => !isFav(e.t)))];
 }
 
@@ -234,7 +237,7 @@ function renderHome() {
   const box = $('buckets');
   box.innerHTML = '';
   if (favMode === 'only' && !pool().some(isFav))
-    box.innerHTML = '<p class="sub">No favorites here yet. Switch to “Favorites first”, open a range and tap ♡ on a track.</p>';
+    box.innerHTML = '<p class="sub">No favorites here yet. Switch to “♥ First”, open a range and tap ♡ on a track.</p>';
   let ul = null, group = null;
   for (const b of buckets) {
     const list = playable(inBucket(b));
@@ -280,7 +283,11 @@ function trackRow(e, onTap) {
   fav.classList.toggle('on', isFav(e.t));
   never.classList.toggle('on', isNever(e.t));
   fav.onclick = ev => { ev.stopPropagation(); setMark(e.t, isFav(e.t) ? null : 'fav'); };
-  never.onclick = ev => { ev.stopPropagation(); setMark(e.t, isNever(e.t) ? null : 'never'); };
+  never.onclick = ev => {
+    ev.stopPropagation();
+    if (isNever(e.t)) return setMark(e.t, null);                  // bringing it back: no question
+    if (confirm(`Never play “${e.t.title}”?\n\nIt'll be skipped everywhere, for everyone.`)) setMark(e.t, 'never');
+  };
   if (onTap) li.onclick = onTap;
   return li;
 }
