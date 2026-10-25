@@ -53,14 +53,17 @@
   #now { margin-top:14px; min-height:1.3em; }
   progress { width:100%; height:4px; accent-color:var(--accent); }
   /* Now-playing bar: pinned to the bottom of every screen once something has played */
-  body.has-mini { padding-bottom:calc(env(safe-area-inset-bottom) + 88px); }
-  .mini { position:fixed; left:0; right:0; bottom:0; z-index:10; display:flex; align-items:center; gap:8px;
+  body.has-mini { padding-bottom:calc(env(safe-area-inset-bottom) + 118px); }
+  .mini { position:fixed; left:0; right:0; bottom:0; z-index:10;
           background:#000; border-top:1px solid #333;
-          padding:10px 16px calc(env(safe-area-inset-bottom) + 10px); }
-  .mini button { background:var(--accent); color:#111; font-weight:700; font-size:16px; padding:12px 0; width:76px; flex:none; }
-  .mini #miniFwd, .mini #miniNext { background:var(--row); color:var(--fg); width:58px; }
-  .mini #miniPlay { width:70px; }
-  .mini span { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+          padding:8px 16px calc(env(safe-area-inset-bottom) + 10px); }
+  #miniNow { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding:2px 0 8px; }
+  .miniBtns { display:flex; gap:8px; }
+  .miniBtns button { flex:1; min-width:0; background:var(--row); color:var(--fg); font-weight:700;
+                     font-size:16px; padding:12px 0; }
+  .miniBtns #miniPlay { background:var(--accent); color:#111; flex:1.3; }
+  .miniBtns #miniFav, .miniBtns #miniNever { font-size:20px; padding:9px 0; }
+  #miniFav.on { color:var(--accent); }
   footer { color:var(--dim); font-size:13px; margin-top:28px; line-height:1.5; }
   details summary { cursor:pointer; }
   .hidden { display:none !important; }
@@ -117,7 +120,10 @@
 
 <!-- Now playing: on every screen. Tap the text to jump to that cadence. -->
 <div id="mini" class="mini hidden">
-  <button id="miniPlay">Pause</button><button id="miniFwd" aria-label="Forward 15 seconds">+15</button><button id="miniNext">Next</button><span id="miniNow" class="sub"></span>
+  <div id="miniNow" class="sub"></div>
+  <div class="miniBtns">
+    <button id="miniPlay">Pause</button><button id="miniFwd" aria-label="Forward 15 seconds">+15</button><button id="miniNext">Next</button><button id="miniFav" aria-label="Favorite">♡</button><button id="miniNever" aria-label="Never play">⊘</button>
+  </div>
 </div>
 
 <audio id="audio" preload="none" playsinline></audio>
@@ -138,24 +144,34 @@ const store = {
 };
 let shuffle = true;                             // on at every visit; the button only changes it for now
 let mode = store.get('mode', 'both');          // 'military' | 'both' | 'music'
-// 'first': favorites pinned and played first | 'only': just favorites | 'ignore': treated like any track
+// 'first': favorites listed first, play starts with one | 'only': just favorites | 'ignore': like any track
 let favMode = store.get('favMode', 'first');
 
 // Favorites / never-play, shared by everyone, kept on the server: { "<src>": "fav" | "never" }
 let marks = {};
 const isFav = t => marks[t.src] === 'fav';
 const isNever = t => marks[t.src] === 'never';
-async function setMark(t, mark) {
+// Changes go to the server one at a time, in order (two quick taps sent at once
+// could land out of order and undo each other); only the newest reply is shown.
+let markChain = Promise.resolve(), markSeq = 0;
+function setMark(t, mark) {
   marks = { ...marks };
   mark ? (marks[t.src] = mark) : delete marks[t.src];             // show it right away
   rerender();
   if (mark === 'never' && pos >= 0 && queue[pos].t === t) next(); // don't keep playing it
-  try {
-    const r = await fetch('api/marks', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-                                         body: JSON.stringify({ src: t.src, mark }) });
-    if (r.ok) { marks = await r.json(); rerender(); }
-  } catch {}
+  const seq = ++markSeq;
+  return markChain = markChain.then(async () => {
+    try {
+      const r = await fetch('api/marks', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                           body: JSON.stringify({ src: t.src, mark }) });
+      if (r.ok && seq === markSeq) { marks = await r.json(); rerender(); }
+    } catch {}
+  });
 }
+
+const askNever = t => {
+  if (confirm(`Never play “${t.title}”?\n\nIt'll be skipped everywhere, for everyone.`)) setMark(t, 'never');
+};
 
 // Display order: favorites, then the rest, then never-play; each A–Z.
 const byTitle = (a, b) => a.t.title.localeCompare(b.t.title, undefined, { numeric: true, sensitivity: 'base' });
@@ -163,12 +179,15 @@ const rank = e => isNever(e.t) ? 2 : isFav(e.t) && favMode !== 'ignore' ? 0 : 1;
 const ordered = list => list.slice().sort((a, b) => rank(a) - rank(b) || byTitle(a, b));
 const playable = list => list.filter(e => !isNever(e.t));
 
-// What plays, in order: favorites first (each part shuffled if Shuffle is on).
+// What plays, in order. "♥ First" lists favorites first and starts with one of
+// them (a random one when shuffled); after that everything is mixed together.
 function playOrder(list) {
   const mix = l => shuffle ? shuffled(l) : l;
   const ok = ordered(playable(list));
-  if (favMode === 'ignore') return mix(ok);
-  return [...mix(ok.filter(e => isFav(e.t))), ...mix(ok.filter(e => !isFav(e.t)))];
+  const favs = ok.filter(e => isFav(e.t));
+  if (favMode !== 'first' || !favs.length) return mix(ok);
+  const first = shuffle ? favs[Math.floor(Math.random() * favs.length)] : favs[0];
+  return [first, ...mix(ok.filter(e => e !== first))];
 }
 
 // Tracks allowed by the home-screen selector.
@@ -285,20 +304,19 @@ function trackRow(e, onTap) {
   fav.onclick = ev => { ev.stopPropagation(); setMark(e.t, isFav(e.t) ? null : 'fav'); };
   never.onclick = ev => {
     ev.stopPropagation();
-    if (isNever(e.t)) return setMark(e.t, null);                  // bringing it back: no question
-    if (confirm(`Never play “${e.t.title}”?\n\nIt'll be skipped everywhere, for everyone.`)) setMark(e.t, 'never');
+    isNever(e.t) ? setMark(e.t, null) : askNever(e.t);           // bringing it back: no question
   };
   if (onTap) li.onclick = onTap;
   return li;
 }
 
 function renderBucket() {
-  const list = inBucket(viewBucket), ok = playable(list);
+  const list = playable(inBucket(viewBucket));   // never-play only shows on the Never-play list
   $('bTitle').textContent = `${label(viewBucket)} spm`;
-  const adj = ok.filter(e => e.rate !== 1).length;
-  const n = ok.length - adj, skip = list.length - ok.length;
+  const adj = list.filter(e => e.rate !== 1).length;
+  const n = list.length - adj;
   const counts = [n && `${n} track${n > 1 ? 's' : ''}`, adj && `${adj} sped up or slowed down (max 4%)`]
-    .filter(Boolean).join(' + ') + (skip ? ` · ${skip} never-play` : '');
+    .filter(Boolean).join(' + ');
   $('bSub').textContent = [category(viewBucket), counts].filter(Boolean).join(' · ');
   const ul = $('tracks');
   ul.innerHTML = '';
@@ -344,9 +362,8 @@ function startBucket(b, firstKey) {
   playAt(0);
 }
 
-function playAt(i) {
-  pos = i;
-  const e = queue[pos];
+// Point the player at a track, optionally starting part-way in (seconds).
+function load(e, at = 0) {
   audio.src = e.t.src;
   // Speed nudge like a turntable: pitch moves with speed (under a semitone at 4%).
   // Safari's pitch-preserving stretch sounds warbly, so it stays off
@@ -355,7 +372,34 @@ function playAt(i) {
   audio.preservesPitch = audio.webkitPreservesPitch = false;
   audio.defaultPlaybackRate = audio.playbackRate = e.rate;
   audio.loop = queue.length === 1;              // lone track just repeats
-  audio.play();
+  if (at > 0) audio.addEventListener('loadedmetadata', () => { audio.currentTime = at; }, { once: true });
+}
+
+// Resume after a pause. On iPhone the browser often drops the audio connection
+// while paused and then sits there instead of playing. So: remember where we
+// were (lastTime), and if play fails or the clock hasn't moved after 4 s,
+// reload the track and jump back to that spot.
+let lastTime = 0, resumeCheck = 0, retries = 0;
+function resume() {
+  if (pos < 0) return;
+  const at = lastTime;
+  const reload = () => { load(queue[pos], at); audio.play().catch(() => {}); };
+  audio.play()?.catch(err => { if (err.name !== 'AbortError') reload(); });
+  clearTimeout(resumeCheck);
+  resumeCheck = setTimeout(() => { if (!audio.paused && audio.currentTime < at + 0.5) reload(); }, 4000);
+}
+audio.onerror = () => {                          // dropped connection mid-track: pick up where we were
+  if (pos < 0) return;
+  if (retries++ < 2) { load(queue[pos], lastTime); audio.play().catch(() => {}); } else next();
+};
+audio.onplaying = () => { retries = 0; };
+
+function playAt(i) {
+  pos = i;
+  const e = queue[pos];
+  lastTime = 0;
+  load(e);
+  audio.play().catch(() => {});
   if ('mediaSession' in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({
       title: e.title, artist: `${e.t.artist} · ${e.bpm ?? '?'} spm`, album: `${label(playingBucket)} spm`,
@@ -384,15 +428,18 @@ function updateMini() {
   const on = pos >= 0;
   $('mini').classList.toggle('hidden', !on);
   if (on) {
+    const t = queue[pos].t;
     $('miniPlay').textContent = audio.paused ? 'Play' : 'Pause';
     $('miniNow').textContent = `${label(playingBucket)} spm · ${queue[pos].title}`;
+    $('miniFav').textContent = isFav(t) ? '♥' : '♡';
+    $('miniFav').classList.toggle('on', isFav(t));
   }
   document.body.classList.toggle('has-mini', on);
 }
 
 $('play').onclick = () => {
   if (playingBucket !== viewBucket || pos < 0) return startBucket(viewBucket);
-  audio.paused ? audio.play() : audio.pause();
+  audio.paused ? resume() : audio.pause();
 };
 for (const btn of $('modes').children) {
   btn.onclick = () => { mode = btn.dataset.mode; store.set('mode', mode); renderHome(); };
@@ -400,11 +447,14 @@ for (const btn of $('modes').children) {
 for (const btn of $('favModes').children) {
   btn.onclick = () => { favMode = btn.dataset.fav; store.set('favMode', favMode); renderHome(); };
 }
-$('miniPlay').onclick = () => { audio.paused ? audio.play() : audio.pause(); };
+$('miniPlay').onclick = () => { audio.paused ? resume() : audio.pause(); };
 // Skip ahead 15 s; past the end the track ends and the next one starts.
 const forward15 = () => { if (pos >= 0) audio.currentTime = Math.min(audio.currentTime + 15, audio.duration || Infinity); };
 $('miniFwd').onclick = forward15;
 $('miniNext').onclick = next;
+// Mark what's playing without hunting for it in the list (handy mid-run).
+$('miniFav').onclick = () => { if (pos >= 0) { const t = queue[pos].t; setMark(t, isFav(t) ? null : 'fav'); } };
+$('miniNever').onclick = () => { if (pos >= 0) askNever(queue[pos].t); };
 $('miniNow').onclick = () => { if (playingBucket !== null) location.hash = `#/${playingBucket}`; };
 $('shuffle').onclick = () => {
   shuffle = !shuffle;
@@ -417,14 +467,17 @@ $('shuffle').onclick = () => {
 };
 
 audio.onplay = audio.onpause = () => { updateControls(); updateMini(); };
-audio.ontimeupdate = () => { if (audio.duration) $('prog').value = audio.currentTime / audio.duration; };
+audio.ontimeupdate = () => {
+  if (audio.currentTime > 0) lastTime = audio.currentTime;
+  if (audio.duration) $('prog').value = audio.currentTime / audio.duration;
+};
 
 // iOS 17+: declare this as music playback (not ambient sound) so the
 // ring/silent switch doesn't mute it and it keeps going when locked.
 try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch {}
 
 if ('mediaSession' in navigator) {
-  navigator.mediaSession.setActionHandler('play', () => audio.play());
+  navigator.mediaSession.setActionHandler('play', resume);    // lock screen / AirPods
   navigator.mediaSession.setActionHandler('pause', () => audio.pause());
   navigator.mediaSession.setActionHandler('nexttrack', next);
   try { navigator.mediaSession.setActionHandler('seekforward', forward15); } catch {}  // not every browser has it
