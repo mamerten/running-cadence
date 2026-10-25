@@ -179,3 +179,15 @@ skipped, keeping one copy of each. Mat holds the rights to the library.
 **Mistake made here, don't repeat:** the first pass added only 3 files after
 reading the catalog's `license` column and the "(Unofficial)" folder name as
 licensing limits. Mat has the rights; the library goes in whole.
+
+## Purchased album (Oct 25, 2026)
+
+Mat bought "50 Running Cadences of the U.S. Military, Vol. 2" (U.S. Drill
+Sergeant Field Recordings, 2016) from Amazon Music. Unzipped into the library at
+`Music\Military Cadences\Purchased\U.S. Drill Sergeant Field Recordings\…` and
+added whole as `local:Purchased/…` sources (`amz-drill-sgt-vol2-NN-*.mp3`).
+No duplicates of existing clips (fingerprint ≤ 0.60). Measured: 41 at running
+pace (156–171), 9 marching (115–140: Jody, Here We Go Again, Everywhere We Go,
+All the Way, I Heard That in the Navy, Hey Apache, and the three "Marching…"
+tracks). App total: 161 military tracks, 423 min. The download zip stays out
+of git (`*.zip` in `.gitignore`).

@@ -6,3 +6,6 @@ staging/
 # out of git (and off the public repo).
 public/music/
 public/tracks.json
+
+# Downloads dropped in the project folder (e.g. purchased albums) never go in git
+*.zip
