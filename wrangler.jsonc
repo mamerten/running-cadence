@@ -1,6 +1,6 @@
 // Static site served by Cloudflare Workers. Everything in public/ is uploaded.
 // All audio goes through src/worker.js first: Range support for iPhone and seeking (+15 s).
-// /api/marks (favorites and never-play, shared by everyone) is stored in the MARKS KV namespace.
+// /api/marks is a read-only copy of the old shared marks in KV, for the page's one-time #/import.
 {
   "name": "running-cadence",
   "main": "src/worker.js",

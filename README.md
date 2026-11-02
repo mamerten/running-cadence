@@ -44,9 +44,11 @@ Copyrighted music on a public URL: turn on Cloudflare Access for cadence.matmert
 ## How it fits together
 - `public/index.html` – the whole player
 - `tools/build-tracklist.mjs` – writes `public/tracks.json` (runs on every deploy)
+- Favorites (♡) and never-play (⊘) are private to each browser (`localStorage`).
+  They don't sync between devices or browsers, even on the same Chrome account.
+  To delete tracks for good, read the titles off that browser's Never-play list.
 - `src/worker.js` – byte-range support so iPhone Safari can stream and seek audio,
-  and `/api/marks`: favorites (♡) and never-play (⊘), shared by everyone, stored
-  as one JSON object in the `MARKS` KV namespace. To see what's marked never-play
-  (e.g. before deleting tracks for good):
-  `npx wrangler kv key get marks --binding MARKS --remote`
+  and `/api/marks`, a read-only copy of the old shared marks in the `MARKS` KV
+  namespace. Opening `https://cadence.matmerten.com/#/import` copies them into
+  that browser, once per device.
 - `wrangler.jsonc` – Cloudflare Workers config (custom domain cadence.matmerten.com)

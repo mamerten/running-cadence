@@ -110,7 +110,7 @@
   <ul id="tracks"></ul>
 </section>
 
-<!-- Never-play list: every track anyone marked ⊘, to review and later delete -->
+<!-- Never-play list: every track marked ⊘ in this browser, to review and later delete -->
 <section id="never" class="hidden">
   <button class="back" onclick="location.hash=''">‹ All cadences</button>
   <h1>Never play</h1>
@@ -147,30 +147,32 @@ let mode = store.get('mode', 'both');          // 'military' | 'both' | 'music'
 // 'first': favorites listed first, play starts with one | 'only': just favorites | 'ignore': like any track
 let favMode = store.get('favMode', 'first');
 
-// Favorites / never-play, shared by everyone, kept on the server: { "<src>": "fav" | "never" }
-let marks = {};
+// Favorites / never-play, private to this browser: { "<src>": "fav" | "never" }
+let marks = store.get('marks', {});
 const isFav = t => marks[t.src] === 'fav';
 const isNever = t => marks[t.src] === 'never';
-// Changes go to the server one at a time, in order (two quick taps sent at once
-// could land out of order and undo each other); only the newest reply is shown.
-let markChain = Promise.resolve(), markSeq = 0;
 function setMark(t, mark) {
   marks = { ...marks };
-  mark ? (marks[t.src] = mark) : delete marks[t.src];             // show it right away
+  mark ? (marks[t.src] = mark) : delete marks[t.src];
+  store.set('marks', marks);
   rerender();
   if (mark === 'never' && pos >= 0 && queue[pos].t === t) next(); // don't keep playing it
-  const seq = ++markSeq;
-  return markChain = markChain.then(async () => {
-    try {
-      const r = await fetch('api/marks', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-                                           body: JSON.stringify({ src: t.src, mark }) });
-      if (r.ok && seq === markSeq) { marks = await r.json(); rerender(); }
-    } catch {}
-  });
+}
+
+// One-time: opening #/import copies the old shared marks (read-only on the
+// server) into this browser. Anything already marked here wins.
+async function importMarks() {
+  try {
+    const old = await (await fetch('api/marks', { cache: 'no-store' })).json();
+    marks = { ...old, ...marks };
+    store.set('marks', marks);
+    rerender();
+    alert(`Copied ${Object.keys(old).length} marks to this browser.`);
+  } catch { alert("Couldn't copy the marks. Check your connection and try again."); }
 }
 
 const askNever = t => {
-  if (confirm(`Never play “${t.title}”?\n\nIt'll be skipped everywhere, for everyone.`)) setMark(t, 'never');
+  if (confirm(`Never play “${t.title}”?\n\nIt'll be skipped in this browser.`)) setMark(t, 'never');
 };
 
 // Display order: favorites, then the rest, then never-play; each A–Z.
@@ -343,6 +345,7 @@ const rerender = () => neverView ? renderNever() : viewBucket !== null ? renderB
 
 function route() {
   const m = location.hash.match(/^#\/(\w+)$/);
+  if (m?.[1] === 'import') { importMarks(); location.hash = ''; return; }
   neverView = m?.[1] === 'never';
   viewBucket = !m || neverView ? null : (m[1] === 'unsorted' ? 'unsorted' : +m[1]);
   $('home').classList.toggle('hidden', !!m);
@@ -487,12 +490,8 @@ if ('mediaSession' in navigator) {
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-Promise.all([
-  fetch('tracks.json', { cache: 'no-store' }).then(r => r.json()),
-  fetch('api/marks', { cache: 'no-store' }).then(r => r.ok ? r.json() : {}).catch(() => ({})),
-]).then(([data, m]) => {
+fetch('tracks.json', { cache: 'no-store' }).then(r => r.json()).then(data => {
   tracks = data;
-  marks = m;
   addEventListener('hashchange', route);
   route();
 });

@@ -1,6 +1,7 @@
 // Two jobs:
-// 1. /api/marks: favorites and never-play marks, shared by everyone who uses
-//    the site, kept as one JSON object { "<track src>": "fav" | "never" } in KV.
+// 1. /api/marks: read-only copy of the old shared favorites and never-play marks
+//    ({ "<track src>": "fav" | "never" } in KV), for the page's one-time #/import.
+//    Marks now live in each visitor's browser.
 // 2. Audio: adds HTTP Range support. iPhone Safari asks for audio in chunks
 //    ("Range: bytes=...") and won't reliably play or seek files served without
 //    a 206 Partial Content reply, which Workers static assets don't do on their own.
@@ -13,26 +14,12 @@ export default {
 };
 
 const KEY = 'marks';
-const TRACK = /^(generated|free|cadence|music)\/[^/]{1,250}$/;   // a src from tracks.json
-const MAX = 5000;                                                // tracks we could ever have
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
 
 async function marks(request, env) {
-  const all = (await env.MARKS.get(KEY, 'json')) || {};
-  if (request.method === 'GET') return json(all);
-  if (request.method !== 'POST') return json({ error: 'GET or POST' }, 405);
-
-  let body;
-  try { body = await request.json(); } catch { return json({ error: 'bad JSON' }, 400); }
-  const { src, mark } = body || {};
-  if (typeof src !== 'string' || !TRACK.test(src) || ![null, 'fav', 'never'].includes(mark ?? null))
-    return json({ error: 'need { src, mark: "fav" | "never" | null }' }, 400);
-
-  if (mark) all[src] = mark; else delete all[src];
-  if (Object.keys(all).length > MAX) return json({ error: 'too many marks' }, 400);
-  await env.MARKS.put(KEY, JSON.stringify(all));
-  return json(all);
+  if (request.method !== 'GET') return json({ error: 'read-only' }, 405);
+  return json((await env.MARKS.get(KEY, 'json')) || {});
 }
 
 async function audio(request, env) {
