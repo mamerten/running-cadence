@@ -435,7 +435,7 @@ function updateMini() {
   if (on) {
     const t = queue[pos].t;
     $('miniPlay').textContent = audio.paused ? 'Play' : 'Pause';
-    $('miniNow').textContent = `${label(playingBucket)} spm · ${queue[pos].title}`;
+    $('miniNow').textContent = [`${label(playingBucket)} spm`, queue[pos].length, queue[pos].title].filter(Boolean).join(' · ');
     $('miniFav').textContent = isFav(t) ? '♥' : '♡';
     $('miniFav').classList.toggle('on', isFav(t));
   }
