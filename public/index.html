@@ -234,13 +234,15 @@ function entry(t, bpm) {
 
 const mmss = s => (s = Math.round(s), `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`);
 
+// Long tracks would otherwise fill most of a run, so a track's factor is
+// 3 min ÷ its length (never above 1): at 6 min 0.5, at 20 min 0.15. A lower
+// factor tends to land later in the order; every track still plays in full.
+const lengthFactor = e => e.t.seconds ? Math.min(1, 180 / e.t.seconds) : 1;
+
+// Weighted shuffle: each track draws random^(1/factor), highest draw plays first.
 function shuffled(list) {
-  const a = list.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
+  return list.map(e => [Math.random() ** (1 / lengthFactor(e)), e])
+    .sort((a, b) => b[0] - a[0]).map(x => x[1]);
 }
 
 // ---------- screens ----------
