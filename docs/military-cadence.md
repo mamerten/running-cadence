@@ -191,3 +191,18 @@ pace (156–171), 9 marching (115–140: Jody, Here We Go Again, Everywhere We G
 All the Way, I Heard That in the Navy, Hey Apache, and the three "Marching…"
 tracks). App total: 161 military tracks, 423 min. The download zip stays out
 of git (`*.zip` in `.gitignore`).
+
+## Push-up cadence / organized PT: looked at and dropped (Nov 2026)
+
+A friend suggested adding the voice-led PT sessions units do together ("In
+cadence… Exercise… One, two, three, ONE…"). Mat wants human voices, not beeps
+or a generated count. We searched DVIDS and Wikimedia Commons and checked 56
+videos by transcript. The best were Future Soldier Preparatory Course:
+Calisthenics 1–6 (dvids:892659, 892632, 892687, 893284, 893282, 893287) and
+Fit for Duty with MSgt Mike Skaggs (e.g. dvids:154520). Mat listened and
+rejected them: camera audio from the field, not good enough for the app. Spotify
+searches found only running and marching albums. YouTube was not scanned.
+
+Don't repeat this search. Reopen only if someone names a specific recording
+that sounds good, and have Mat listen before building anything. It would be a
+separate "PT" section with no shuffle, tempo sorting or speed changes.
