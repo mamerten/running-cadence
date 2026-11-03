@@ -1353,18 +1353,7 @@
  {
   "file": "lib-army---18th-military-police-brigade-run.mp3",
   "source": "local:Called Cadences/Army - 18th Military Police Brigade Run.mp3",
-  "title": "18th Military Police Brigade Run",
-  "credit": "U.S. Army, 18th Military Police Brigade",
-  "kind": "running",
-  "license": "Public domain (US Gov work)",
-  "source_url": "https://www.youtube.com/watch?v=uCLtEqJp8pI",
-  "clips": [
-   [
-    0,
-    100000
-   ]
-  ],
-  "note": "from Mat's Dropbox batch; official channel, measured running pace"
+  "reject": "Mat listened: terrible. Deleted from the app (Nov 2026)"
  },
  {
   "file": "lib-marines---244th-marine-corps-birthday-cadence.mp3",
@@ -1550,17 +1539,7 @@
  {
   "file": "lib-army-airborne-ranger-march.mp3",
   "source": "local:Called Cadences/Army - Airborne Ranger March.mp3",
-  "title": "Airborne Ranger March",
-  "credit": "U.S. Army \u00b7 archive.org AirborneMarch",
-  "kind": "called",
-  "license": "Mat's library (rights held)",
-  "source_url": "https://archive.org/details/AirborneMarch",
-  "clips": [
-   [
-    0,
-    100000
-   ]
-  ]
+  "reject": "Mat listened: terrible. Deleted from the app (Nov 2026)"
  },
  {
   "file": "lib-army-hard-work-cadence.mp3",
@@ -1775,17 +1754,7 @@
  {
   "file": "lib-navy-band-four-flams.mp3",
   "source": "local:Drum Cadences/Navy Band - Four Flams.mp3",
-  "title": "Four Flams",
-  "credit": "Navy Band \u00b7 archive.org DrumCadences / navyband.navy.mil",
-  "kind": "drum",
-  "license": "Mat's library (rights held)",
-  "source_url": "https://archive.org/details/DrumCadences",
-  "clips": [
-   [
-    0,
-    100000
-   ]
-  ]
+  "reject": "Mat listened: terrible. Deleted from the app (Nov 2026)"
  },
  {
   "file": "lib-air-force-band-drum-cadence-concert-band.mp3",

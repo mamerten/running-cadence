@@ -17,8 +17,9 @@ listed stretch out as an MP3 into `public/cadence/`.
 
 - **Mat's cadence library** (Dropbox, `local:` sources): recordings Mat
   collected and edited himself (see "Dropbox batch" below). **Mat holds the
-  rights to his library; everything in it goes in the app.** Don't second-guess
-  that from folder names or catalog `license` text.
+  rights to his library; everything in it goes in the app**, except what he has
+  deleted by ear (see "Deleted by Mat" below). Don't second-guess that from
+  folder names or catalog `license` text.
 
 ## What's in the app (Oct 20, 2026)
 
@@ -191,6 +192,14 @@ pace (156–171), 9 marching (115–140: Jody, Here We Go Again, Everywhere We G
 All the Way, I Heard That in the Navy, Hey Apache, and the three "Marching…"
 tracks). App total: 161 military tracks, 423 min. The download zip stays out
 of git (`*.zip` in `.gitignore`).
+
+## Deleted by Mat (Nov 2026)
+
+Mat listened and called these terrible, so they're out of the app for good:
+18th Military Police Brigade Run, Airborne Ranger March and Four Flams (`reject`
+in `cadence-sources.json`, so an import skips them; the originals are still in
+his Dropbox library), plus Pinball Spring 160 from the free music. App total:
+158 military tracks.
 
 ## Push-up cadence / organized PT: looked at and dropped (Nov 2026)
 

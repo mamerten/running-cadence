@@ -70,16 +70,6 @@
   "detected_bpm": 160
  },
  {
-  "file": "incompetech-pinball-spring-160.mp3",
-  "title": "Pinball Spring 160",
-  "artist": "Kevin MacLeod",
-  "license": "CC BY 4.0",
-  "license_url": "https://creativecommons.org/licenses/by/4.0/",
-  "source_url": "https://incompetech.com/music/royalty-free/music.html",
-  "bpm": 160,
-  "detected_bpm": 160
- },
- {
   "file": "incompetech-black-vortex.mp3",
   "title": "Black Vortex",
   "artist": "Kevin MacLeod",

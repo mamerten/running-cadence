@@ -740,17 +740,10 @@
   "bpm": 161
  },
  {
-  "file": "lib-army---18th-military-police-brigade-run-1.mp3",
+  "file": null,
   "from": "lib-army---18th-military-police-brigade-run.mp3",
-  "title": "18th Military Police Brigade Run",
-  "artist": "U.S. Army, 18th Military Police Brigade",
-  "license": "Public domain (US Gov work)",
-  "license_url": "https://www.usa.gov/government-copyright",
-  "source_url": "https://www.youtube.com/watch?v=uCLtEqJp8pI",
-  "kind": "running",
-  "start": 0,
-  "seconds": 181,
-  "bpm": 169
+  "bpm": null,
+  "rejected": "Mat listened: terrible. Deleted from the app (Nov 2026)"
  },
  {
   "file": "lib-marines---244th-marine-corps-birthday-cadence-1.mp3",
@@ -909,17 +902,10 @@
   "bpm": 117
  },
  {
-  "file": "lib-army-airborne-ranger-march-1.mp3",
+  "file": null,
   "from": "lib-army-airborne-ranger-march.mp3",
-  "title": "Airborne Ranger March",
-  "artist": "U.S. Army \u00b7 archive.org AirborneMarch",
-  "license": "Mat's library (rights held)",
-  "license_url": "https://www.usa.gov/government-copyright",
-  "source_url": "https://archive.org/details/AirborneMarch",
-  "kind": "called",
-  "start": 0,
-  "seconds": 70,
-  "bpm": 169
+  "bpm": null,
+  "rejected": "Mat listened: terrible. Deleted from the app (Nov 2026)"
  },
  {
   "file": "lib-army-hard-work-cadence-1.mp3",
@@ -1104,17 +1090,10 @@
   "bpm": 117
  },
  {
-  "file": "lib-navy-band-four-flams-1.mp3",
+  "file": null,
   "from": "lib-navy-band-four-flams.mp3",
-  "title": "Four Flams",
-  "artist": "Navy Band \u00b7 archive.org DrumCadences / navyband.navy.mil",
-  "license": "Mat's library (rights held)",
-  "license_url": "https://www.usa.gov/government-copyright",
-  "source_url": "https://archive.org/details/DrumCadences",
-  "kind": "drum",
-  "start": 0,
-  "seconds": 44,
-  "bpm": 193
+  "bpm": null,
+  "rejected": "Mat listened: terrible. Deleted from the app (Nov 2026)"
  },
  {
   "file": "lib-air-force-band-drum-cadence-concert-band-1.mp3",
